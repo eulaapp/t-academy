@@ -50,4 +50,6 @@ GROUP BY produtos.codigo_marca;
 SELECT *, DATE_FORMAT(NOW(), '%d/%m/%y') AS 'Data', DATE_FORMAT(NOW(), '%H:%i') AS 'Hora' FROM produtos LIMIT 1;
 
 DROP TABLE produtos;
+TRUNCATE TABLE marcas;
+DROP TABLE marcas;
 
