@@ -1,0 +1,3 @@
+CREATE TABLE cargos(
+	codigo_cargo INT PRIMARY KEY AUTO_INCREMENT
+);
