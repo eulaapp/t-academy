@@ -27,6 +27,11 @@ CREATE TABLE alunos_cursos(
     status_curso VARCHAR(20)
 );
 
+DROP TABLE professores;
+DROP TABLE cursos;
+DROP TABLE alunos;
+DROP TABLE alunos_cursos;
+
 INSERT INTO professores(nome_professor) VALUES
 ('Larissa'),
 ('Daniel'),
@@ -38,23 +43,23 @@ INSERT INTO professores(nome_professor) VALUES
 ('Bianca');
 
 INSERT INTO cursos(nome_curso, valor_curso, codigo_professor) VALUES
-('Java - Básico', 1.000, 2),
-('Java - Avançado', 1.250, 2),
-('Spring Boot', 1.800,2),
-('C#', 1.140, 7),
-('ASP.NET Core', 1.800, 7),
+('Java - Básico', 1000, 2),
+('Java - Avançado', 1250, 2),
+('Spring Boot', 1800,2),
+('C#', 1140, 7),
+('ASP.NET Core', 1800, 7),
 ('Python', 900, 4),
-('Flask', 1.020,4),
-('Django', 1.400,4),
+('Flask', 1020,4),
+('Django', 1400,4),
 ('PHP', 950,4),
-('Laravel', 1.600,4),
-('Angular', 2.300, 1),
-('React', 2.100,1),
+('Laravel', 1600,4),
+('Angular', 2300, 1),
+('React', 2100,1),
 ('HTML', 500,8),
 ('CSS', 700,8),
 ('JavaScript', 900,4),
 ('Banco de dados', 600,3),
-('Design Patterns', 2.700,8);
+('Design Patterns', 2700,8);
 
 INSERT INTO alunos(nome_aluno, nascimento_aluno, estado_aluno, cidade_aluno) VALUES
 ('Aline', '1997/03/01', 'Santa Catarina', 'Blumenau'),
@@ -138,7 +143,8 @@ INNER JOIN cursos
 ON cursos.codigo_curso = alunos_cursos.codigo_curso
 WHERE alunos_cursos.status_curso = 'Não iniciado';
 
-SELECT nascimento_aluno FROM 
+SELECT nascimento_aluno FROM alunos WHERE DATE_FORMAT(NOW(),'%Y') - DATE_FORMAT(nascimento_aluno,'%Y') < 18;
+
 SELECT
 	alunos.nome_aluno,
     COUNT(*)
@@ -147,7 +153,63 @@ INNER JOIN alunos
 ON alunos.codigo_aluno = alunos_cursos.codigo_aluno
 INNER JOIN cursos
 ON cursos.codigo_curso = alunos_cursos.codigo_curso
+WHERE alunos.nascimento_aluno = (SELECT nascimento_aluno FROM alunos WHERE DATE_FORMAT(NOW(),'%Y') - DATE_FORMAT(nascimento_aluno,'%Y') < 18);
+
+SELECT MAX(valor_curso) FROM cursos;
+
+SELECT
+	cursos.nome_curso,
+    cursos.valor_curso,
+    COUNT(*)
+FROM cursos
+INNER JOIN alunos_cursos
+ON cursos.codigo_curso = alunos_cursos.codigo_curso
+WHERE cursos.valor_curso = (SELECT MAX(valor_curso) FROM cursos);
+    
+
+SELECT
+	professores.nome_professor,
+    COUNT(*)
+FROM cursos
+INNER JOIN professores
+ON professores.codigo_professor = cursos.codigo_professor
+GROUP BY(professores.nome_professor);
 
 
+SELECT nome_professor, nome_curso, COUNT(codigo_aluno) AS qt_alunos
+FROM alunos_cursos
+RIGHT JOIN cursos c on alunos_cursos.codigo_curso = c.codigo_curso
+RIGHT JOIN professores p on p.codigo_professor = c.codigo_professor
+GROUP BY nome_professor, nome_curso;
+
+SELECT
+	alunos.nome_aluno,
+    cursos.nome_curso,
+    cursos.valor_curso,
+    professores.nome_professor
+FROM alunos_cursos
+INNER JOIN alunos 
+ON alunos.codigo_aluno = alunos_cursos.codigo_aluno
+INNER JOIN cursos
+ON cursos.codigo_curso = alunos_cursos.codigo_curso
+INNER JOIN professores
+ON professores.codigo_professor = cursos.codigo_professor;
+
+SELECT AVG(valor_curso) FROM cursos;
+
+SELECT
+	cursos.nome_curso,
+    cursos.valor_curso,
+    COUNT(*)
+FROM cursos
+INNER JOIN alunos_cursos
+ON cursos.codigo_curso = alunos_cursos.codigo_curso
+WHERE cursos.valor_curso >= (SELECT AVG(valor_curso) FROM cursos);
+
+DELETE FROM alunos WHERE 2022 - DATE_FORMAT(nascimento_aluno,"%Y") > 30;
+
+
+
+	
 
 
