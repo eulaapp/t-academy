@@ -138,6 +138,16 @@ INNER JOIN cursos
 ON cursos.codigo_curso = alunos_cursos.codigo_curso
 WHERE alunos_cursos.status_curso = 'Não iniciado';
 
+SELECT nascimento_aluno FROM 
+SELECT
+	alunos.nome_aluno,
+    COUNT(*)
+FROM alunos_cursos
+INNER JOIN alunos
+ON alunos.codigo_aluno = alunos_cursos.codigo_aluno
+INNER JOIN cursos
+ON cursos.codigo_curso = alunos_cursos.codigo_curso
+
 
 
 
