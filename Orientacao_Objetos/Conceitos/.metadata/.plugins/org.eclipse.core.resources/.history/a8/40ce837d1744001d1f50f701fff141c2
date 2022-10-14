@@ -1,0 +1,78 @@
+package exerciciosPOO03;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+	
+	static boolean anoBissexto = false;
+
+	public static void main(String[] args) throws ParseException {
+
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+//		Date dataFormatada = formato.parse(diaAtual);
+		
+		String diaAtual = JOptionPane.showInputDialog("Digite a data atual: ");
+		String datas[] = diaAtual.split("/");
+
+		int dia = Integer.parseInt(datas[0]);
+		int mes = Integer.parseInt(datas[1]);
+		int ano = Integer.parseInt(datas[2]);
+	
+		dia(dia, mes);
+		mes(mes);
+		ano(ano);
+	}
+	
+	public static int dia(int dia, int mes) {
+
+		int diaAnterior = 0;
+		
+		if (dia < 1) {
+			if (mes == 01 || mes == 03 || mes == 05 || mes == 07 || mes == 8 || mes == 10 || mes == 12) {
+				return diaAnterior = 31;
+			} else if (mes == 02){
+				if (anoBissexto) {
+					return diaAnterior = 29;
+				} else {
+					return diaAnterior = 28;
+				}
+			} else if (mes == 04 || mes == 06 || mes == 09 || mes == 10) {
+				return diaAnterior = 30;
+			}
+		} else {
+			return diaAnterior = dia - 1;
+		}
+
+	}
+
+	public static int mes(int mes) {
+		if (mes > 1 && mes <= 12) {
+			int mesAnterior = mes - 1;
+			System.out.print(mesAnterior + "/");
+			return mesAnterior;
+		} else {
+			System.out.println("Mes invalido");
+			return 0;
+		}
+	}
+
+	public static int ano(int ano) {
+		if (ano >= 1900 && ano <= 2100) {
+			 if (ano % 4 == 0 && ano % 100 != 0) {
+				 anoBissexto = true;
+				 System.out.println(ano);
+				return ano;
+			 } else {
+				 System.out.println(ano);
+				 anoBissexto = false;
+				return ano;
+			 }
+		} else {
+			System.out.println("Ano invalido");
+			return 0;
+		}
+	}
+}

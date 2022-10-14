@@ -1,0 +1,9 @@
+package descontos;
+
+public class DescontoPadrao {
+	
+	public double desconto() {
+		
+	}
+
+}

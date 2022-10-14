@@ -1,0 +1,11 @@
+package metodoMain;
+
+import metodosEstaticos.SistemaLojaRoupas;
+
+public class Main {
+
+	public static void main(String[] args) {
+		SistemaLojaRoupas.iniciarSistema();
+	}
+
+}

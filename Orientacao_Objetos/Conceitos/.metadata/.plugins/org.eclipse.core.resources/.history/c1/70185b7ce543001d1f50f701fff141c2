@@ -1,0 +1,27 @@
+package exercicioClasseLocalDateTime;
+import java.time.LocalDateTime;
+
+
+public class Produto {
+
+	String nome;
+	double valor;
+	int quantidadeEstoque;
+	int hora;
+	int data;
+	
+	public void cadastrarProduto(String nome, double valor, int quantidadeEstoque) {
+		this.nome = nome;
+		this.valor = valor;
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
+
+	public void exibirProduto() {
+		System.out.println("Nome: " + nome);
+		System.out.println("Valor: " +  valor);
+		System.out.println("Quantidade em estoque: " + quantidadeEstoque);
+		System.out.println("Data: " + data);
+		System.out.println("Hora: " + hora);
+	}
+	
+}

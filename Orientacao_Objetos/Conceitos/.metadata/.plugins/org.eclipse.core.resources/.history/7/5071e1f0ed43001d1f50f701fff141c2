@@ -1,0 +1,39 @@
+package exerciciosPOO;
+
+import java.util.ArrayList;
+
+public class AcoesContato implements Padrao{
+	
+	public static ArrayList<Contato> dados = new ArrayList<>();
+
+	@Override
+	public void cadastrar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void listar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pesquisar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void alterar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remover() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,59 @@
+package exerciciosPOO;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class AcoesContato implements Padrao {
+	
+	public static ArrayList<Contato> dados = new ArrayList<>();
+
+	@Override
+	public void cadastrar() {
+		Scanner scan = new Scanner(System.in);
+		
+		Contato contato = new Contato();
+		
+		System.out.println("Digite o nome do contato: ");
+		contato.setNome(scan.next());
+		
+		System.out.println("Digite o e-mail do contato: ");
+		contato.setEmail(scan.next());
+		
+		System.out.println("Digite o telefone do contato");
+		contato.setTelefone(scan.next());
+		
+		dados.add(contato);
+		
+	}
+
+	@Override
+	public void listar() {
+		for(int i = 0; i < dados.size(); i++) {
+			System.out.println("--------------------------");
+			System.out.println("Contatos" + dados.get(i));
+			System.out.println("Nome: "+ dados.get(i));
+			System.out.println("E-mail: "+ dados.get(i));
+			System.out.println("Telefone: "+ dados.get(i));
+			System.out.println("---------------------------");
+		}
+	}
+
+	@Override
+	public void pesquisar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void alterar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remover() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

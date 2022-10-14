@@ -1,0 +1,43 @@
+package menus;
+
+import javax.swing.JOptionPane;
+
+import acoes.AcoesProduto;
+
+public class MenuProdutos {
+
+	public static void abrirMenuProdutos() {
+		boolean continuarMenuProdutos = true;
+		AcoesProduto produto = new AcoesProduto();
+
+		while (continuarMenuProdutos) {
+			int menuProdutos = Integer.parseInt(JOptionPane.showInputDialog(
+					"1 - Cadastrar \n2 - Selecionar \n3 - Pesquisar \n4 - Alterar \n5 - Remover \n6 - Sair"));
+			switch (menuProdutos) {
+			case 1:
+				produto.cadastrar();
+				break;
+			case 2:
+				produto.selecionar();
+				break;
+			case 3:
+				produto.pesquisar();
+				break;
+			case 4:
+				produto.alterar();
+				break;
+			case 5:
+				produto.remover();
+				break;
+			case 6:
+				int sairMenuMarca = JOptionPane.showConfirmDialog(null, "Deseja sair do cadastro de marcas?");
+				if (sairMenuMarca == 0) {
+					continuarMenuProdutos = false;
+				}
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Opção inválida. Informe um número de acordo com o informado.");
+			}
+		}
+	}
+}

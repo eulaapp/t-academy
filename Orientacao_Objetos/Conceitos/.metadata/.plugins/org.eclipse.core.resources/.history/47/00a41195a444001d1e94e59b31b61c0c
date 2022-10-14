@@ -1,0 +1,8 @@
+package trabalhoAvaliativo;
+
+public interface Metodos {
+	public void cadastrar();
+	public void selecionar();
+	public void alterar();
+	public void remover();
+}

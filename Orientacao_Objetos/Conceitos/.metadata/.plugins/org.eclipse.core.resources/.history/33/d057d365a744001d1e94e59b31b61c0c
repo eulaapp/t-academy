@@ -1,0 +1,11 @@
+package trabalhoAvaliativo;
+
+public class Produto {
+
+	// Atributos
+	
+	private String marca;
+	private String categoria;
+	private String tamanho;
+	private double valor;
+}

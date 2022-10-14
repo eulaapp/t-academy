@@ -1,0 +1,41 @@
+package iniciarSistema;
+
+import javax.swing.JOptionPane;
+
+import menus.MenuMarcas;
+import menus.MenuProdutos;
+
+public class SistemaLojaRoupas {
+
+	public static void iniciarSistema() {
+		boolean continuarSistema = true;
+
+		while (continuarSistema) {
+			int opcao = 0;
+			try {
+				opcao = Integer.parseInt(JOptionPane.showInputDialog(null,
+						"Digite 1 para cadastrar uma marca. \nDigite 2 para cadastrar um produto \nDigite 3 para sair do sistema"));
+				switch (opcao) {
+				case 1:
+					MenuMarcas.abrirMenuMarcas();
+					break;
+				case 2:
+					MenuProdutos.abrirMenuProdutos();
+					break;
+				case 3:
+					int sairSistema = JOptionPane.showConfirmDialog(null, "Deseja sair do sistema?");
+					if (sairSistema == 0) {
+						continuarSistema = false;
+					}
+					break;
+				default:
+					JOptionPane.showMessageDialog(null, "Opção inválida. Selecione novamente.");
+				}
+			} catch (Exception erro) {
+				JOptionPane.showMessageDialog(null, "Informe apenas números");
+			}
+
+		}
+	}
+
+}

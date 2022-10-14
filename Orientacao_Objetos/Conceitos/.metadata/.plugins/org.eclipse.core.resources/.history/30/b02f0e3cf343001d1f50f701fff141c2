@@ -1,0 +1,69 @@
+package exerciciosPOO;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class AcoesContato implements Padrao {
+	
+	public static ArrayList<Contato> dados = new ArrayList<>();
+	Scanner scan = new Scanner(System.in);
+
+	@Override
+	public void cadastrar() {
+		
+		Contato contato = new Contato();
+		
+		System.out.println("Digite o nome do contato: ");
+		contato.setNome(scan.next());
+		
+		System.out.println("Digite o e-mail do contato: ");
+		contato.setEmail(scan.next());
+		
+		System.out.println("Digite o telefone do contato");
+		contato.setTelefone(scan.next());
+		
+		dados.add(contato);
+		
+	}
+
+	@Override
+	public void listar() {
+		for(int i = 0; i < dados.size(); i++) {
+			System.out.println("--------------------------");
+			System.out.println("Contatos" + dados.get(i));
+			System.out.println("Nome: "+ dados.get(i).getNome());
+			System.out.println("E-mail: "+ dados.get(i).getEmail());
+			System.out.println("Telefone: "+ dados.get(i).getTelefone());
+			System.out.println("---------------------------");
+		}
+	}
+
+	@Override
+	public void pesquisar() {
+		System.out.println("Digite o nome do contato pra pesquisar: ");
+		String nome = scan.next();
+		
+		for (int i = 0; i < dados.size(); i++) {
+			if (nome.equals(dados.get(i).getNome())) {
+				System.out.println("Nome: "+ dados.get(i).getNome());
+				System.out.println("E-mail: "+ dados.get(i).getEmail());
+				System.out.println("Telefone: "+ dados.get(i).getTelefone());
+			} else {
+				System.out.println("Contato não cadastrado");
+			}
+		}		
+	}
+
+	@Override
+	public void alterar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remover() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

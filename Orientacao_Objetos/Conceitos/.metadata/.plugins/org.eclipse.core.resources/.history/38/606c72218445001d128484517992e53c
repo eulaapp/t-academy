@@ -1,0 +1,104 @@
+package acoes;
+
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import metodosInterface.Metodos;
+import modelos.Camiseta;
+import modelos.Marca;
+import modelos.Produto;
+
+public class AcoesProduto implements Metodos {
+
+	// Array list para armazenar os produtos cadastrados
+	public static ArrayList<Produto> produtosCadastrados = new ArrayList<>();
+
+	@Override
+	public void cadastrar() {
+		String nome = JOptionPane.showInputDialog("Digite o nome da camiseta");
+		
+		while(true) {
+			String marca = JOptionPane.showInputDialog("Digite o nome da marca da camiseta");
+			AcoesMarca.marca.setNome(marca);
+			AcoesMarca.marca.setPossuiProdutosCadastrados(true);
+
+			if(existeMarca(AcoesMarca.marca)) {
+				break;
+			}
+		}
+		
+		String tamanho = JOptionPane.showInputDialog("Digite o tamanho da camiseta");
+		String modelo = JOptionPane.showInputDialog("Digite o modelo da camiseta");
+		String cor = JOptionPane.showInputDialog("Digite a cor da camiseta");
+		String tecido = JOptionPane.showInputDialog("Digite o tecido da camiseta");
+		double valor = (Double.parseDouble(JOptionPane.showInputDialog("Digite o valor da camiseta")));
+		
+		Camiseta camiseta = new Camiseta(tamanho, cor, tecido, modelo, nome, AcoesMarca.marca, valor);
+
+		produtosCadastrados.add(camiseta);
+
+	}
+	
+	public boolean existeMarca(Marca obj) {
+		for(int i = 0; i < AcoesMarca.dadosMarca.size(); i++) {
+			if(obj.getNome().equals(AcoesMarca.dadosMarca.get(i).getNome())) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+	@Override
+	public void selecionar() {
+		String listarProdutos = "Produtos cadastrados\n";
+		for (int i = 0; i < produtosCadastrados.size(); i++) {
+			listarProdutos += "\n" + produtosCadastrados.get(i).getNome();
+		}
+		JOptionPane.showMessageDialog(null, listarProdutos);
+	}
+
+	@Override
+	public void pesquisar() {
+		String termoPesquisado = JOptionPane.showInputDialog("Digite o nome o produto que deseja pesquisar");
+		String exibirTermoPesquisado = "";
+
+		boolean encontrado = false;
+
+		for (int i = 0; i < produtosCadastrados.size(); i++) {
+
+			if (produtosCadastrados.get(i).getNome().contains(termoPesquisado)) {
+				encontrado = true;
+				exibirTermoPesquisado += "\n" + produtosCadastrados.get(i).getNome();
+			}
+		}
+
+		if (encontrado) {
+			JOptionPane.showMessageDialog(null, exibirTermoPesquisado);
+		} else {
+			JOptionPane.showMessageDialog(null, "Termo não encontrado.");
+		}
+	}
+
+	@Override
+	public void alterar() {
+		String marca = JOptionPane.showInputDialog("Digite o nome do produto que deseja alterar");
+		for (int i = 0; i < produtosCadastrados.size(); i++) {
+			if (marca.equals(produtosCadastrados.get(i).getNome())) {
+				produtosCadastrados.get(i).setNome(JOptionPane.showInputDialog("Digite o novo nome da produto"));
+				JOptionPane.showMessageDialog(null, "Nome do produto foi alterado!");
+			}
+		}
+	}
+
+	@Override
+	public void remover() {
+		String removerProduto = JOptionPane.showInputDialog("Digite o nome do produto que deseja remover");
+		for (int i = 0; i < produtosCadastrados.size(); i++) {
+			if (removerProduto.equals(produtosCadastrados.get(i).getNome())) {
+				produtosCadastrados.remove(i);
+				JOptionPane.showMessageDialog(null, "Produto removido!");
+			}
+		}
+	}
+
+}

@@ -1,0 +1,36 @@
+package trabalhoAvaliativo;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		boolean continuar = true;
+
+		int opcao = Integer.parseInt(JOptionPane.showInputDialog(null, "Se deseja cadastrar uma marca, digite 1;\n Se deseja cadastrar um produto, digite 2"));
+		AcoesMarca marca = new AcoesMarca();
+		
+		switch (opcao) {
+		case 1:
+			int menuMarca = Integer.parseInt(JOptionPane.showInputDialog("1 - Cadastrar \n2 - Selecionar \n3 - Selecionar \n4 - Alterar \n5 - Remover"));
+			switch(menuMarca) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			}
+			break;
+		case 2:
+			break;
+		}
+		
+	}
+
+}

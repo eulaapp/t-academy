@@ -1,0 +1,92 @@
+package acoes;
+
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+import metodosInterface.Metodos;
+import modelos.Marca;
+
+public class AcoesMarca implements Metodos {
+
+	// ArrayList para armazenar as marcas cadastradas
+	public static ArrayList<Marca> dadosMarca = new ArrayList<>();
+
+	@Override
+	public void cadastrar() {
+		Marca marca = new Marca();
+		marca.setNome(JOptionPane.showInputDialog("Digita o nome da marca que deseja cadastrar"));
+		dadosMarca.add(marca);
+		JOptionPane.showMessageDialog(null, "Marca cadastrada com sucesso!");
+	}
+
+	@Override
+	public void selecionar() {
+		String listarMarcas = "Marcas cadastradas\n";
+		for (int i = 0; i < dadosMarca.size(); i++) {
+			listarMarcas += "\n" + dadosMarca.get(i).getNome();
+		}
+		JOptionPane.showMessageDialog(null, listarMarcas);
+	}
+
+	@Override
+	public void pesquisar() {
+		String termoPesquisado = JOptionPane.showInputDialog("Digite a marca que deseja pesquisar");
+		String exibirTermoPesquisado = "";
+
+		boolean encontrado = false;
+
+		for (int i = 0; i < dadosMarca.size(); i++) {
+
+			if (dadosMarca.get(i).getNome().contains(termoPesquisado)) {
+				encontrado = true;
+				exibirTermoPesquisado += "\n" + dadosMarca.get(i).getNome();
+			}
+		}
+
+		if (encontrado) {
+			JOptionPane.showMessageDialog(null, exibirTermoPesquisado);
+		} else {
+			JOptionPane.showMessageDialog(null, "Termo não encontrado.");
+		}
+
+	}
+
+	@Override
+	public void alterar() {
+		String marca = JOptionPane.showInputDialog("Digite o nome da marca que deseja alterar");
+		for (int i = 0; i < dadosMarca.size(); i++) {
+			if (marca.equals(dadosMarca.get(i).getNome())) {
+				dadosMarca.get(i).setNome(JOptionPane.showInputDialog("Digite o novo nome da marca"));
+				JOptionPane.showMessageDialog(null, "Nome da marca foi alterado!");
+			}
+		}
+	}
+
+	@Override
+	public void remover() {
+		String removerMarca = JOptionPane.showInputDialog("Informe o nome da marca que deseja remover");
+
+		for (int i = 0; i < dadosMarca.size(); i++) {
+			if (removerMarca.equals(dadosMarca.get(i).getNome())) {
+				dadosMarca.remove(i);
+				JOptionPane.showMessageDialog(null, "Marca removida!");
+			} else {
+				marcaPossuiProdutos();
+			}
+		}
+	}
+	
+	// Metodo para verificar se a marca possui algum produto cadastrado
+	
+	public void marcaPossuiProdutos() {
+		for (int i = 0; i < dadosMarca.size(); i++) {
+			System.out.println(dadosMarca.get(i).isPossuiProdutosCadastrados());
+			if (dadosMarca.get(i).isPossuiProdutosCadastrados()) {
+				JOptionPane.showMessageDialog(null, "A marca possui produtos cadastrados e não pode ser excluida");
+			} else {
+				remover();
+			}
+		}
+	}
+
+}

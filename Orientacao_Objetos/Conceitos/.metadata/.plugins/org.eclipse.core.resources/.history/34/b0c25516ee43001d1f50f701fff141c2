@@ -1,0 +1,43 @@
+package exerciciosPOO;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+	
+	
+
+	public static void main(String[] args) {
+		
+				
+		System.out.println("Selecione a opcao que deseja realizar: \n");
+		System.out.println("1 - Cadastrar\n2 - Listar \n3 - Pesquisar \n4 - Alterar \n5 - Remover");
+		
+		Scanner scan = new Scanner(System.in);
+		int opcao = scan.nextInt();
+		
+		switch(opcao) {
+		case 1:
+
+			AcoesContato ac = new AcoesContato();
+			ac.cadastrar();
+		
+			break;
+		case 2:
+			contato.listar();
+			break;
+		case 3:
+			contato.pesquisar();
+			break;
+		case 4:
+			contato.alterar();
+			break;
+		case 5:
+			contato.remover();
+			break;
+		}
+	}
+	
+}

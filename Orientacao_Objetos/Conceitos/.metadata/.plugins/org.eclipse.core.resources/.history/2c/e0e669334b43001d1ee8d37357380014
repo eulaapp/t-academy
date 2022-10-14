@@ -1,0 +1,26 @@
+package atividade02;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		String palavra = "charmander"; 
+		int contador = 0;
+		
+		for(int i = 0; i < palavra.length(); i++) {
+			
+			if (palavra.charAt(i) == 'a' || palavra.charAt(i) == 'e' || palavra.charAt(i) == 'i' ||palavra.charAt(i) == 'o' || palavra.charAt(i) == 'u') {
+				contador = contador + 1;
+			}
+		}
+		
+		System.out.println(contador);
+
+	}
+	
+	public void conjugarVerbo() {
+		String verbo = "andar";
+		
+	}
+	
+}

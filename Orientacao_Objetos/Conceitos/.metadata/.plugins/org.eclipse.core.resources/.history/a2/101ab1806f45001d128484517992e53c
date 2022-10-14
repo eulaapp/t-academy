@@ -1,0 +1,64 @@
+package modelos;
+
+public class Produto {
+	
+	// Atributos
+	
+	private String nome;
+	private String tamanho;
+	private double valor;
+	private boolean isFeminino;
+	private boolean isMasculino;
+	private boolean isInfantil;
+	
+	// Getter e setters
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getTamanho() {
+		return tamanho;
+	}
+	
+	public void setTamanho(String tamanho) {
+		this.tamanho = tamanho;
+	}
+	
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
+	public boolean isFeminino() {
+		return isFeminino;
+	}
+	
+	public void setFeminino(boolean isFeminino) {
+		this.isFeminino = isFeminino;
+	}
+	
+	public boolean isMasculino() {
+		return isMasculino;
+	}
+	
+	public void setMasculino(boolean isMasculino) {
+		this.isMasculino = isMasculino;
+	}
+	
+	public boolean isInfantil() {
+		return isInfantil;
+	}
+	
+	public void setInfantil(boolean isInfantil) {
+		this.isInfantil = isInfantil;
+	}
+	
+}

@@ -1,0 +1,39 @@
+package atividade02;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		String verbo = "ajuda";
+		
+		if (verbo.endsWith("ar")) {
+			
+			System.out.println("EU ");
+			System.out.println("TU ");
+			System.out.println("ELE ");
+			System.out.println("NÓS ");
+			System.out.println("VÓS ");
+			System.out.println("ELES ");
+
+
+			
+		} else {
+			System.out.println("A palavra informada não é um verbo");
+		}
+		
+		
+//		String palavra = "charmander"; 
+//		int contador = 0;
+//		
+//		for(int i = 0; i < palavra.length(); i++) {
+//			
+//			if (palavra.charAt(i) == 'a' || palavra.charAt(i) == 'e' || palavra.charAt(i) == 'i' ||palavra.charAt(i) == 'o' || palavra.charAt(i) == 'u') {
+//				contador = contador + 1;
+//			}
+//		}
+//		
+//		System.out.println(contador);
+
+	}
+	
+}

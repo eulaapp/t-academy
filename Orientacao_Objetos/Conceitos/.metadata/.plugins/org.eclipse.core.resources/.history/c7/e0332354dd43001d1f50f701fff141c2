@@ -1,0 +1,34 @@
+package exercicioClasseLocalDateTime;
+import java.time.LocalDateTime;
+import java.time.LocalDate;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		LocalDateTime tempo = LocalDateTime.now();
+		
+		int dia = tempo.getDayOfMonth();
+		int mes = tempo.getMonthValue();
+		int ano = tempo.getYear();
+		
+		int hora = tempo.getHour();
+		int minute = tempo.getMinute();
+		
+		String meses[] = {"Janeiro", "Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"};
+		
+		String dias[] = {"Um","Dois","Três","Quatro","Cinco","Seis","Sete","Oito","Nove","Dez","Onze","Doze","Treze",
+				"Catorze","Quize","Dezesseis","Dezessete","Dezoito","Dezenove","Vinte","Vinte e Um","Vinte e Dois","Vinte e três","Vinte e Quatro",
+				"Vinte e Cinco","Vinte e Seis","Vinte e Sete","Vinte e Oito","Vinte e Nove","Trinta","Trinta e Um"};
+		
+		String anos[] = {"Dois mil e dezessete","Dois mil e dezoito","Dois mil e dezenove", "Dois mil e vinte","Dois mil e vinte e dois",
+				"Dois mil e vinte e três","Dois mil e vinte e quatro","Dois mil e vinte e cinco","Dois mil e vinte e seis","Dois mil e vinte e sete"};
+		
+		System.out.println(dias[dia-1] + " de " + meses[mes-1] + " de " + anos[ano]);
+
+				
+ 		System.out.println(dia+"/"+mes+"/"+ano+" - "+hora+":"+minute);
+ 		
+	}
+
+}

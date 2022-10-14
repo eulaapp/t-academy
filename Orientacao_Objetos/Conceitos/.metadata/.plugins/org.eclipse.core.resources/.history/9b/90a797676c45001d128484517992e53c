@@ -1,0 +1,19 @@
+package modelos;
+
+public class Produto {
+
+	// Atributos
+	
+	private double valor;
+	
+	// Getter e setter
+
+	public double getValor() {
+		return valor;
+	}
+	
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+	
+}

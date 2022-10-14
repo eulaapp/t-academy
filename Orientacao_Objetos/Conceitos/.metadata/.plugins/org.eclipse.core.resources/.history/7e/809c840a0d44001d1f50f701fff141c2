@@ -1,0 +1,36 @@
+package exerciciosPOO03;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+
+	public static void main(String[] args) throws ParseException {
+		
+		String diaAtual = JOptionPane.showInputDialog("Digite a data atual: ");
+		String datas[] = diaAtual.split("/");
+		
+		for(int i = 0; i < datas.length; i++) {
+			String dia = String.valueOf(datas.charAt(0));
+		}
+		
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		Date dataFormatada = formato.parse(diaAtual);
+		System.out.println(formato.format(dataFormatada));
+		
+	}
+	
+	public void dia() {
+		
+	}
+
+	public void mes() {
+		
+	}
+
+	public void ano() {
+		
+	}
+}

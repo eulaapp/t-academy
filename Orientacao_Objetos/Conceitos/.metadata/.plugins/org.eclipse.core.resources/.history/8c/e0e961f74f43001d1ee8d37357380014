@@ -1,0 +1,25 @@
+package exerciciosClasseMath;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Calculadora c = new Calculadora();
+		
+		System.out.println("Digite a operação que deseja realizar: ");
+		System.out.println("1 - somar, 2 - subtrair, 3 - multiplicar, 4 - divisao, 5 - seno, 6 - cosseno, 7 - tangente, 8 - log, 9 - raiz quadrada, 10 - raiz cubica");
+		
+		Scanner scan = new Scanner(System.in);
+		int opcao = scan.nextInt();
+		
+		switch (opcao) {
+		case 1: 
+			System.out.println("Digite o primeiro valor: ");
+			double numero = scan.nextDouble();
+					
+		}
+		
+	}
+
+}

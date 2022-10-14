@@ -1,0 +1,11 @@
+package exerciciosClasseMath;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Calculadora c = new Calculadora();
+		
+		System.out.println("Selecione a operação que deseja realizar: ");
+	}
+
+}

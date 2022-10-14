@@ -1,0 +1,13 @@
+package modelos;
+
+public class Camiseta {
+	
+	// Atributos
+	private String modelo;
+	private String tamanho;
+	private String cor;
+	private boolean isFeminino;
+	private boolean isMasculino;
+	private boolean isInfantil;
+	
+}

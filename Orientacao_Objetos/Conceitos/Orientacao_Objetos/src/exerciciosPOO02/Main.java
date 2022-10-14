@@ -1,0 +1,27 @@
+package exerciciosPOO02;
+
+import java.text.DecimalFormat;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		double valor = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor"));
+		int mes = Integer.parseInt(JOptionPane.showInputDialog("Digite o tempo"));
+		double taxaJuros = Double.parseDouble(JOptionPane.showInputDialog("Digite a taxa de juros"));
+		
+		double taxaAnual = taxaJuros/12;
+
+		System.out.println(taxaAnual);
+		for (int i = 0; i < mes; i ++) {
+			valor += valor * (taxaAnual/100);
+			
+			DecimalFormat df = new DecimalFormat();
+			
+			System.out.println(df.format(valor));
+		}
+	}
+
+}

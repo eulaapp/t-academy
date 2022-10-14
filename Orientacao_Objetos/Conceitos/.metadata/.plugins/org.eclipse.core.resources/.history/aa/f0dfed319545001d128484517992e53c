@@ -1,0 +1,39 @@
+package modelos;
+
+public class Camiseta extends Produto {
+	
+	// Atributos
+	
+	private String cor;
+	private String modelo;
+	
+	// Método construtor
+	
+	public Camiseta(String cor, String modelo, String nome, Marca marca, double valor) {
+		super();
+		this.cor = cor;
+		this.modelo = modelo;
+		this.nome = nome;
+		this.marca = marca;
+		this.valor = valor;
+	}
+	
+	// Getter e setter
+
+	public String getCor() {
+		return cor;
+	}
+	
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+	
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+	
+}

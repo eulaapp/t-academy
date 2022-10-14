@@ -1,0 +1,11 @@
+package exerciciosPOO;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Contato contato1 = new Contato();
+		contato1.cadastrar();
+		contato1.listar();
+	}
+
+}

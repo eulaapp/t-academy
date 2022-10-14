@@ -1,0 +1,56 @@
+package exerciciosClasseMath;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Calculadora c = new Calculadora();
+		
+		System.out.println("Digite a operação que deseja realizar: ");
+		System.out.println("1 - somar, 2 - subtrair, 3 - multiplicar, 4 - divisao, 5 - seno, 6 - cosseno, 7 - tangente, 8 - log, 9 - raiz quadrada, 10 - raiz cubica");
+		
+		Scanner scan = new Scanner(System.in);
+		int opcao = scan.nextInt();
+		
+		switch (opcao) {
+		case 1: 
+			System.out.println("Digite o primeiro valor: ");
+			double numero1 = scan.nextDouble();
+			
+			System.out.println("Digite o segundo valor: ");
+			double numero2 = scan.nextDouble();
+			
+			System.out.println(numero1+numero2);
+			break;
+		case 2: 
+			System.out.println("Digite o primeiro valor: ");
+			double n1 = scan.nextDouble();
+			
+			System.out.println("Digite o segundo valor: ");
+			double n2 = scan.nextDouble();
+			
+			System.out.println(n1-n2);
+
+			break;
+		case 3: 
+			break;
+		case 4: 
+			break;
+		case 5:
+			break;
+		case 6: 
+			break;
+		case 7:
+			break;
+		case 8:
+			break;
+		case 9:
+			break;
+		case 10:
+			break;
+		}
+		
+	}
+
+}

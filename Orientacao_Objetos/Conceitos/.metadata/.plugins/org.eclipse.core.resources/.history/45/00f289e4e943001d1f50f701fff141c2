@@ -1,0 +1,43 @@
+package exerciciosPOO;
+
+import javax.swing.JOptionPane;
+
+public class Contato implements Padrao {
+	
+	int codigo;
+	String nome;
+	String email;
+	String telefone;
+
+	@Override
+	public void cadastrar() {
+		this.nome = JOptionPane.showInputDialog("Digite seu nome");
+		this.email = JOptionPane.showInputDialog("Digite seu e-mail");
+		this.telefone = JOptionPane.showInputDialog("Digite seu telefone");
+	}
+
+	@Override
+	public void listar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void pesquisar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void alterar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remover() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,15 @@
+package trabalhoAvaliativo;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		AcoesMarca marca1 = new AcoesMarca();
+		marca1.cadastrar();
+		
+		
+		
+		
+	}
+
+}

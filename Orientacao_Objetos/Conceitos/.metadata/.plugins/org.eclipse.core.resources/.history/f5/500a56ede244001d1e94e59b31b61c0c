@@ -1,0 +1,46 @@
+package trabalhoAvaliativo;
+
+import javax.swing.JOptionPane;
+
+public class SistemaLojaRoupas {
+
+	public static void iniciarSistema() {
+		boolean continuar = true;
+
+		int opcao = Integer.parseInt(JOptionPane.showInputDialog(null,
+				"Se deseja cadastrar uma marca, digite 1. \nSe deseja cadastrar um produto, digite 2."));
+		AcoesMarca marca = new AcoesMarca();
+
+		switch (opcao) {
+		case 1:
+			while (continuar) {
+				int menuMarca = Integer.parseInt(JOptionPane.showInputDialog(
+						"1 - Cadastrar \n2 - Selecionar \n3 - Pesquisar \n4 - Alterar \n5 - Remover \n6 - Sair"));
+				switch (menuMarca) {
+				case 1:
+					marca.cadastrar();
+					break;
+				case 2:
+					marca.selecionar();
+					break;
+				case 3:
+					marca.pesquisar();
+					break;
+				case 4:
+					marca.alterar();
+					break;
+				case 5:
+					marca.remover();
+					break;
+				case 6:
+					break;
+				}
+			}
+
+			break;
+		case 2:
+			break;
+		}
+	}
+
+}

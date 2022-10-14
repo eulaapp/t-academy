@@ -1,0 +1,27 @@
+package exerciciosClasseMath;
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Calculadora c = new Calculadora();
+		c.calcular();
+		
+		System.out.println("Deseja continuar?");
+		Scanner scan = new Scanner(System.in);
+		
+		boolean continuar = scan.nextBoolean();
+		
+		if (continuar == true) {
+			c.calcular();
+		} else {
+			System.out.println("Desligando");
+		}
+		
+		
+	}
+
+}

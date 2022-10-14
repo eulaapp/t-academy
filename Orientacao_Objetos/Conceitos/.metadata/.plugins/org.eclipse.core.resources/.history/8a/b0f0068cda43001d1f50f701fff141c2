@@ -1,0 +1,33 @@
+package exercicioClasseLocalDateTime;
+import java.time.LocalDateTime;
+import java.time.LocalDate;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		LocalDateTime tempo = LocalDateTime.now();
+		
+		int dia = tempo.getDayOfMonth();
+		int mes = tempo.getMonthValue();
+		int ano = tempo.getYear();
+		
+		int hora = tempo.getHour();
+		int minute = tempo.getMinute();
+		
+		String meses[] = {"Janeiro", "Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"};
+		
+				
+ 		System.out.println(dia+"/"+mes+"/"+ano+" - "+hora+":"+minute);
+ 		
+ 		for(int i = 0; i < meses.length; i++) {
+ 			if (mes == i) {
+ 				System.out.println(meses);
+ 				
+ 			}
+ 		}
+ 		
+ 
+	}
+
+}

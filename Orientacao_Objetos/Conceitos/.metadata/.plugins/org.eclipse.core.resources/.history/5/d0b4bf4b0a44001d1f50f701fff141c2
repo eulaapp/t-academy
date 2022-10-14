@@ -1,0 +1,12 @@
+package exerciciosPOO03;
+import java.time.LocalDateTime;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+
+	public static void main(String[] args) {
+		String diaAtual = JOptionPane.showInputDialog("Digite a data atual: ");
+	}
+
+}

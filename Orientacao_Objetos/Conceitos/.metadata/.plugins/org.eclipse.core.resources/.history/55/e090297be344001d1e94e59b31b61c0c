@@ -1,0 +1,57 @@
+package trabalhoAvaliativo;
+
+import javax.swing.JOptionPane;
+
+public class SistemaLojaRoupas {
+
+	public static void iniciarSistema() {
+		boolean continuarSistema = true;
+		boolean continuarMenuMarcas = true;
+
+		while (continuarSistema) {
+			int opcao = Integer.parseInt(JOptionPane.showInputDialog(null,
+					"Se deseja cadastrar uma marca, digite 1. \nSe deseja cadastrar um produto, digite 2."));
+			
+			AcoesMarca marca = new AcoesMarca();
+
+			switch (opcao) {
+			case 1:
+				while (continuarMenuMarcas) {
+					int menuMarca = Integer.parseInt(JOptionPane.showInputDialog(
+							"1 - Cadastrar \n2 - Selecionar \n3 - Pesquisar \n4 - Alterar \n5 - Remover \n6 - Sair"));
+					switch (menuMarca) {
+					case 1:
+						marca.cadastrar();
+						break;
+					case 2:
+						marca.selecionar();
+						break;
+					case 3:
+						marca.pesquisar();
+						break;
+					case 4:
+						marca.alterar();
+						break;
+					case 5:
+						marca.remover();
+						break;
+					case 6:
+						String sairSistema = JOptionPane.showInputDialog("Deseja sair do registro de marcas?");
+						if (sairSistema.equals("sim") || sairSistema.equals("Sim")) {
+							continuarMenuMarcas = false;
+						}
+						break;
+					default:
+						JOptionPane.showMessageDialog(null,
+								"Opção inválida. Informe um número de acordo com o informado.");
+					}
+				}
+
+				break;
+			case 2:
+				break;
+			}
+		}
+	}
+
+}

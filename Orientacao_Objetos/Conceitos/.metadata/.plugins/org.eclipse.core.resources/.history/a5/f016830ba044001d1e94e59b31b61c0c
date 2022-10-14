@@ -1,0 +1,15 @@
+package exerciciosPOO04;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+
+	public static void main(String[] args) {
+		String frase = JOptionPane.showInputDialog("Digite um termo, pode conter letras, números e caracteres");
+		
+		for (int i = 0; i < frase.length() ; i++) {
+			System.out.println(i);
+		}
+	}
+
+}
