@@ -17,7 +17,7 @@ BEGIN
 END $$
 DELIMITER ;
 
-CALL teste('E', 'teste@gmail.com', @retorno);
+CALL teste('Eula Paula', 'teste@gmail.com', @retorno);
 select @retorno;
 
 CALL cadastrar('Eula Paula', 'teste@gmail.com');
