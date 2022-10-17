@@ -1,4 +1,4 @@
-DROP DATABASE avaliacao;
+
 CREATE DATABASE avaliacao;
 USE avaliacao;
 
@@ -366,11 +366,233 @@ CREATE TRIGGER reserva_gratis
 AFTER INSERT ON cliente
 FOR EACH ROW
 BEGIN
-	INSERT INTO reserva(data_reserva, cliente_codigo, periodo, valor) VALUE (NOW(),NEW.codigo, 20, 0);
+	INSERT INTO reserva(data_reserva, cliente_codigo, periodo, valor) VALUE (NOW(),NEW.codigo, NEW.periodo, NEW.valor);
     INSERT INTO livro_reserva(livro_codigo, reserva_codigo) VALUE (1, (SELECT MAX(codigo) FROM reserva));
 END$
 
 DELIMITER ;
+
+# Adicionar desconto no valor do livro
+DELIMITER %
+CREATE TRIGGER desconto_livro
+BEFORE INSERT ON livro
+FOR EACH ROW
+BEGIN
+    IF (NEW.valor > 100) THEN
+		SET NEW.valor = NEW.valor * 0.8;
+	ELSE 
+		SET NEW.valor = NEW.valor* 0.9;
+	END IF;
+END%
+
+DELIMITER ;
+
+# Procedure para cadastrar livro
+DELIMITER $$
+CREATE PROCEDURE cadastrar_livro(IN nome VARCHAR(45), IN valor DOUBLE)
+BEGIN
+	INSERT INTO livro(nome, valor) VALUE (nome, valor);
+END$$
+DELIMITER ;
+
+# Procedure para cadastrar livro_reserva
+DELIMITER $$
+CREATE PROCEDURE cadastrar_livro_reserva(IN livro_codigo INT, IN reserva_codigo INT)
+BEGIN
+	INSERT INTO livro_reserva(livro_codigo, reserva_codigo) VALUE (livro_codigo, reserva_codigo);
+END$$
+DELIMITER ;
+
+# Procedure para cadastrar reserva
+DELIMITER $$
+CREATE PROCEDURE cadastrar_reserva(IN data_reserva DATE, IN cliente_codigo INT, periodo INT, valor DOUBLE)
+BEGIN
+	INSERT INTO reserva(data_reserva, cliente_codigo, periodo, valor) VALUE (data_reserva, cliente_codigo, periodo, valor);
+END$$
+DELIMITER ;
+
+# Procedure para cadastrar cliente
+DELIMITER $$
+CREATE PROCEDURE cadastrar_cliente(IN nome VARCHAR(45), IN data_nascimento DATE)
+BEGIN
+	INSERT INTO cliente(nome, data_nascimento) VALUE (nome, data_nascimento);
+END$$
+DELIMITER ;
+
+# Procedure para cadastrar livro_genero
+DELIMITER $$
+CREATE PROCEDURE cadastrar_livro_genero(IN livro_codigo INT, IN genero_codigo INT)
+BEGIN
+	INSERT INTO livro_genero(livro_codigo, genero_codigo) VALUE (livro_codigo, genero_codigo);
+END$$
+DELIMITER ;
+
+# Procedure para cadastrar genero
+DELIMITER $$
+CREATE PROCEDURE cadastrar_genero(IN nome VARCHAR(45))
+BEGIN
+	INSERT INTO genero(nome) VALUE (nome);
+END$$
+DELIMITER ;
+
+# Procedure para cadastrar livro_autor
+DELIMITER $$
+CREATE PROCEDURE cadastrar_livro_autor(IN livro_codigo INT, autor_codigo INT)
+BEGIN
+	INSERT INTO livro_autor(livro_codigo, autor_codigo) VALUE (livro_codigo, autor_codigo);
+END$$
+DELIMITER ;
+
+# Procedure para cadastrar autor
+DELIMITER $$
+CREATE PROCEDURE cadastrar_autor(IN nome VARCHAR(45))
+BEGIN
+	INSERT INTO autor(nome) VALUE (nome);
+END$$
+DELIMITER ;
+
+# Procedure para cadastrar edicao
+DELIMITER $$
+CREATE PROCEDURE cadastrar_edicao(IN livro_codigo INT, IN editora_codigo INT, IN nome VARCHAR(45), IN data_publicacao DATE)
+BEGIN
+	INSERT INTO edicao(livro_codigo, editora_codigo, nome, data_publicacao) VALUE (livro_codigo, editora_codigo, nome, data_publicacao);
+END$$
+DELIMITER ;
+
+# Procedure para cadastrar editora
+DELIMITER $$
+CREATE PROCEDURE cadastrar_editora(IN nome VARCHAR(45))
+BEGIN
+	INSERT INTO editora(nome) VALUE (nome);
+END$$
+DELIMITER ;
+
+# Procedure para alterar livro
+DELIMITER $$
+CREATE PROCEDURE alterar_livro(IN parametro_codigo INT, IN parametro_nome VARCHAR(45))
+BEGIN
+	UPDATE livro SET nome = parametro_nome WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+# Procedure para alterar data reserva
+DELIMITER $$
+CREATE PROCEDURE alterar_data_reserva(IN parametro_codigo INT, IN parametro_data DATE)
+BEGIN
+	UPDATE reserva SET data_reserva = parametro_data WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+# Procedure para alterar nome do cliente
+DELIMITER $$
+CREATE PROCEDURE alterar_nome_cliente(IN parametro_codigo INT, IN novo_nome VARCHAR(45))
+BEGIN
+	UPDATE cliente SET nome = novo_nome WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+# Procedure para alterar nome do genero
+DELIMITER $$
+CREATE PROCEDURE alterar_nome_genero(IN parametro_codigo INT, IN novo_nome VARCHAR(45))
+BEGIN
+	UPDATE genero SET nome = novo_nome WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+# Procedure para alterar nome do autor
+DELIMITER $$
+CREATE PROCEDURE alterar_nome_autor(IN parametro_codigo INT, IN novo_nome VARCHAR(45))
+BEGIN
+	UPDATE autor SET nome = novo_nome WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+# Procedure para alterar nome da edicao
+DELIMITER $$
+CREATE PROCEDURE alterar_nome_edicao(IN parametro_codigo INT, IN novo_nome VARCHAR(45))
+BEGIN
+	UPDATE edicao SET nome = novo_nome WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+# Procedure para alterar nome da editora
+DELIMITER $$
+CREATE PROCEDURE alterar_nome_editora(IN parametro_codigo INT, IN novo_nome VARCHAR(45))
+BEGIN
+	UPDATE editora SET nome = novo_nome WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+# Procedure para remover livro
+DELIMITER $$
+CREATE PROCEDURE remover_livro(IN parametro_codigo INT)
+BEGIN
+	DELETE FROM livro WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+# Procedure para remover reserva
+DELIMITER $$
+CREATE PROCEDURE remover_reserva(IN parametro_codigo INT)
+BEGIN
+	DELETE FROM reserva WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+# Procedure para remover cliente
+DELIMITER $$
+CREATE PROCEDURE remover_cliente(IN parametro_codigo INT)
+BEGIN
+	DELETE FROM cliente WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+# Procedure para remover genero
+DELIMITER $$
+CREATE PROCEDURE remover_genero(IN parametro_codigo INT)
+BEGIN
+	DELETE FROM genero WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+# Procedure para remover autor
+DELIMITER $$
+CREATE PROCEDURE remover_autor(IN parametro_codigo INT)
+BEGIN
+	DELETE FROM autor WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+# Procedure para remover edição
+DELIMITER $$
+CREATE PROCEDURE remover_edicao(IN parametro_codigo INT)
+BEGIN
+	DELETE FROM edicao WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+# Procedure para remover editora
+DELIMITER $$
+CREATE PROCEDURE remover_editora(IN parametro_codigo INT)
+BEGIN
+	DELETE FROM editora WHERE codigo = parametro_codigo;
+END$$
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
