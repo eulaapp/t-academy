@@ -469,148 +469,280 @@ DELIMITER ;
 
 # Procedure para alterar livro
 DELIMITER $$
-CREATE PROCEDURE alterar_livro(IN parametro_codigo INT, IN parametro_nome VARCHAR(45))
+CREATE PROCEDURE alterar_livro(IN parametro_codigo INT, IN parametro_nome VARCHAR(45), OUT mensagem VARCHAR(45))
 BEGIN
-	UPDATE livro SET nome = parametro_nome WHERE codigo = parametro_codigo;
-END$$
+	DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(livro.codigo)
+    INTO qtd_codigo
+    FROM livro
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		UPDATE livro SET nome = parametro_nome WHERE codigo = parametro_codigo;
+        SET mensagem = 'Livro alterado!';
+	ELSE 
+		SET mensagem = 'Falha ao alterar!';
+	END IF;
+END $$
 DELIMITER ;
 
 # Procedure para alterar data reserva
 DELIMITER $$
-CREATE PROCEDURE alterar_data_reserva(IN parametro_codigo INT, IN parametro_data DATE)
+CREATE PROCEDURE alterar_data_reserva(IN parametro_codigo INT, IN parametro_data DATE, OUT mensagem VARCHAR(45))
 BEGIN
-	UPDATE reserva SET data_reserva = parametro_data WHERE codigo = parametro_codigo;
-END$$
+	DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(reserva.codigo)
+    INTO qtd_codigo
+    FROM reserva
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		UPDATE reserva SET data_reserva = parametro_data WHERE codigo = parametro_codigo;
+        SET mensagem = 'Data alterada!';
+	ELSE 
+		SET mensagem = 'Falha ao alterar!';
+	END IF;
+END $$
 DELIMITER ;
 
 # Procedure para alterar nome do cliente
 DELIMITER $$
-CREATE PROCEDURE alterar_nome_cliente(IN parametro_codigo INT, IN novo_nome VARCHAR(45))
+CREATE PROCEDURE alterar_nome_cliente(IN parametro_codigo INT, IN novo_nome VARCHAR(45), OUT mensagem VARCHAR(45))
 BEGIN
-	UPDATE cliente SET nome = novo_nome WHERE codigo = parametro_codigo;
+	DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(*)
+    INTO qtd_codigo
+    FROM cliente
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		UPDATE cliente SET nome = novo_nome WHERE codigo = parametro_codigo;
+        SET mensagem = 'Cliente alterado!';
+	ELSE 
+		SET mensagem = 'Falha ao alterar!';
+	END IF;
 END$$
 DELIMITER ;
 
 # Procedure para alterar nome do genero
 DELIMITER $$
-CREATE PROCEDURE alterar_nome_genero(IN parametro_codigo INT, IN novo_nome VARCHAR(45))
+CREATE PROCEDURE alterar_nome_genero(IN parametro_codigo INT, IN novo_nome VARCHAR(45), OUT mensagem VARCHAR(45))
 BEGIN
-	UPDATE genero SET nome = novo_nome WHERE codigo = parametro_codigo;
+	DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(*)
+    INTO qtd_codigo
+    FROM genero
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		UPDATE genero SET nome = novo_nome WHERE codigo = parametro_codigo;
+        SET mensagem = 'Genero alterado!';
+	ELSE 
+		SET mensagem = 'Falha ao alterar!';
+	END IF;
 END$$
 DELIMITER ;
 
 # Procedure para alterar nome do autor
 DELIMITER $$
-CREATE PROCEDURE alterar_nome_autor(IN parametro_codigo INT, IN novo_nome VARCHAR(45))
+CREATE PROCEDURE alterar_nome_autor(IN parametro_codigo INT, IN novo_nome VARCHAR(45), OUT mensagem VARCHAR(45))
 BEGIN
-	UPDATE autor SET nome = novo_nome WHERE codigo = parametro_codigo;
+    DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(*)
+    INTO qtd_codigo
+    FROM autor
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		UPDATE autor SET nome = novo_nome WHERE codigo = parametro_codigo;
+        SET mensagem = 'Autor alterado!';
+	ELSE 
+		SET mensagem = 'Falha ao alterar!';
+	END IF;
 END$$
 DELIMITER ;
 
 # Procedure para alterar nome da edicao
 DELIMITER $$
-CREATE PROCEDURE alterar_nome_edicao(IN parametro_codigo INT, IN novo_nome VARCHAR(45))
+CREATE PROCEDURE alterar_nome_edicao(IN parametro_codigo INT, IN novo_nome VARCHAR(45), OUT mensagem VARCHAR(45))
 BEGIN
-	UPDATE edicao SET nome = novo_nome WHERE codigo = parametro_codigo;
+    DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(*)
+    INTO qtd_codigo
+    FROM edicao
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		UPDATE edicao SET nome = novo_nome WHERE codigo = parametro_codigo;
+        SET mensagem = 'Edição alterada!';
+	ELSE 
+		SET mensagem = 'Falha ao alterar!';
+	END IF;
 END$$
 DELIMITER ;
 
 # Procedure para alterar nome da editora
 DELIMITER $$
-CREATE PROCEDURE alterar_nome_editora(IN parametro_codigo INT, IN novo_nome VARCHAR(45))
+CREATE PROCEDURE alterar_nome_editora(IN parametro_codigo INT, IN novo_nome VARCHAR(45), OUT mensagem VARCHAR(45))
 BEGIN
-	UPDATE editora SET nome = novo_nome WHERE codigo = parametro_codigo;
+	DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(*)
+    INTO qtd_codigo
+    FROM editora
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		UPDATE editora SET nome = novo_nome WHERE codigo = parametro_codigo;
+        SET mensagem = 'Editora alterada!';
+	ELSE 
+		SET mensagem = 'Falha ao alterar!';
+	END IF;
 END$$
 DELIMITER ;
 
 # Procedure para remover livro
 DELIMITER $$
-CREATE PROCEDURE remover_livro(IN parametro_codigo INT)
+CREATE PROCEDURE remover_livro(IN parametro_codigo INT, OUT mensagem VARCHAR(45))
 BEGIN
-	DELETE FROM livro WHERE codigo = parametro_codigo;
-END$$
+	DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(*)
+    INTO qtd_codigo
+    FROM livro
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		DELETE FROM livro WHERE codigo = parametro_codigo;
+        SET mensagem = 'Livro removido!';
+	ELSE 
+		SET mensagem = 'Falha ao remover!';
+	END IF;
+END $$
 DELIMITER ;
 
 # Procedure para remover reserva
 DELIMITER $$
-CREATE PROCEDURE remover_reserva(IN parametro_codigo INT)
+CREATE PROCEDURE remover_reserva(IN parametro_codigo INT, OUT mensagem VARCHAR(45))
 BEGIN
-	DELETE FROM reserva WHERE codigo = parametro_codigo;
-END$$
+	DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(*)
+    INTO qtd_codigo
+    FROM reserva
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		DELETE FROM reserva WHERE codigo = parametro_codigo;
+        SET mensagem = 'Reserva removido!';
+	ELSE 
+		SET mensagem = 'Falha ao remover!';
+	END IF;
+END $$
 DELIMITER ;
 
 # Procedure para remover cliente
 DELIMITER $$
-CREATE PROCEDURE remover_cliente(IN parametro_codigo INT)
+CREATE PROCEDURE remover_cliente(IN parametro_codigo INT, OUT mensagem VARCHAR(45))
 BEGIN
-	DELETE FROM cliente WHERE codigo = parametro_codigo;
-END$$
+	DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(*)
+    INTO qtd_codigo
+    FROM cliente
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		DELETE FROM cliente WHERE codigo = parametro_codigo;
+        SET mensagem = 'Cliente removido!';
+	ELSE 
+		SET mensagem = 'Falha ao remover!';
+	END IF;
+END $$
 DELIMITER ;
 
 # Procedure para remover genero
 DELIMITER $$
-CREATE PROCEDURE remover_genero(IN parametro_codigo INT)
+CREATE PROCEDURE remover_genero(IN parametro_codigo INT, OUT mensagem VARCHAR(45))
 BEGIN
-	DELETE FROM genero WHERE codigo = parametro_codigo;
-END$$
+	DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(*)
+    INTO qtd_codigo
+    FROM genero
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		DELETE FROM genero WHERE codigo = parametro_codigo;
+        SET mensagem = 'Genero removido!';
+	ELSE 
+		SET mensagem = 'Falha ao remover!';
+	END IF;
+END $$
 DELIMITER ;
 
 # Procedure para remover autor
 DELIMITER $$
-CREATE PROCEDURE remover_autor(IN parametro_codigo INT)
+CREATE PROCEDURE remover_autor(IN parametro_codigo INT, OUT mensagem VARCHAR(45))
 BEGIN
-	DELETE FROM autor WHERE codigo = parametro_codigo;
+	DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(*)
+    INTO qtd_codigo
+    FROM autor
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		DELETE FROM autor WHERE codigo = parametro_codigo;
+        SET mensagem = 'Autor removido!';
+	ELSE 
+		SET mensagem = 'Falha ao remover!';
+	END IF;
 END$$
 DELIMITER ;
 
 # Procedure para remover edição
 DELIMITER $$
-CREATE PROCEDURE remover_edicao(IN parametro_codigo INT)
+CREATE PROCEDURE remover_edicao(IN parametro_codigo INT, OUT mensagem VARCHAR(45))
 BEGIN
-	DELETE FROM edicao WHERE codigo = parametro_codigo;
+	DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(*)
+    INTO qtd_codigo
+    FROM edicao
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		DELETE FROM edicao WHERE codigo = parametro_codigo;
+        SET mensagem = 'Edição removida!';
+	ELSE 
+		SET mensagem = 'Falha ao remover!';
+	END IF;
 END$$
 DELIMITER ;
 
 # Procedure para remover editora
 DELIMITER $$
-CREATE PROCEDURE remover_editora(IN parametro_codigo INT)
+CREATE PROCEDURE remover_editora(IN parametro_codigo INT, OUT mensagem VARCHAR(45))
 BEGIN
-	DELETE FROM editora WHERE codigo = parametro_codigo;
-END$$
+	DECLARE qtd_codigo INT DEFAULT 0;
+    
+    SELECT COUNT(*)
+    INTO qtd_codigo
+    FROM editora
+    WHERE codigo = parametro_codigo;
+    
+    IF (qtd_codigo > 0) THEN
+		DELETE FROM editora WHERE codigo = parametro_codigo;
+        SET mensagem = 'Editora removida!';
+	ELSE 
+		SET mensagem = 'Falha ao remover!';
+	END IF;
+END $$
 DELIMITER ;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
