@@ -360,6 +360,20 @@ WHERE livro.nome LIKE '%a%' AND genero.nome = 'Fantasia';
 # Livros com valor promocional
 SELECT nome, IF(valor < 30, 'Promoção', 'Preço normal') FROM livro;
 
+# Cadastrar primeira reserva gratuita
+DELIMITER $
+CREATE TRIGGER reserva_gratis
+AFTER INSERT ON cliente
+FOR EACH ROW
+BEGIN
+	INSERT INTO reserva(data_reserva, cliente_codigo, periodo, valor) VALUE (NOW(),NEW.codigo, 20, 0);
+    INSERT INTO livro_reserva(livro_codigo, reserva_codigo) VALUE (1, (SELECT MAX(codigo) FROM reserva));
+END$
+
+DELIMITER ;
+
+
+
 
 
 	
