@@ -360,8 +360,8 @@ SELECT nome, IF(valor < 30, 'Promoção', 'Preço normal') FROM livro;
 
 SELECT nome,
 CASE
-	WHEN DATE_FORMAT(NOW(),'%Y' - data_nascimento) >= 18 THEN 'Maior de idade'
-    ELSE 'Maior de idade'
+	WHEN DATE_FORMAT(NOW(),'%Y') - DATE_FORMAT(data_nascimento,'%Y') >= 18 THEN 'Maior de idade'
+    ELSE 'Menor de idade'
 END AS 'Idade'
 FROM cliente;
 
@@ -397,7 +397,7 @@ DELIMITER $$
 CREATE PROCEDURE cadastrar_livro(IN nome VARCHAR(45), IN valor DOUBLE)
 BEGIN
 	INSERT INTO livro(nome, valor) VALUE (nome, valor);
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para cadastrar livro_reserva
@@ -405,7 +405,7 @@ DELIMITER $$
 CREATE PROCEDURE cadastrar_livro_reserva(IN livro_codigo INT, IN reserva_codigo INT)
 BEGIN
 	INSERT INTO livro_reserva(livro_codigo, reserva_codigo) VALUE (livro_codigo, reserva_codigo);
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para cadastrar reserva
@@ -413,7 +413,7 @@ DELIMITER $$
 CREATE PROCEDURE cadastrar_reserva(IN data_reserva DATE, IN cliente_codigo INT, periodo INT, valor DOUBLE)
 BEGIN
 	INSERT INTO reserva(data_reserva, cliente_codigo, periodo, valor) VALUE (data_reserva, cliente_codigo, periodo, valor);
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para cadastrar cliente
@@ -421,7 +421,7 @@ DELIMITER $$
 CREATE PROCEDURE cadastrar_cliente(IN nome VARCHAR(45), IN data_nascimento DATE)
 BEGIN
 	INSERT INTO cliente(nome, data_nascimento) VALUE (nome, data_nascimento);
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para cadastrar livro_genero
@@ -429,7 +429,7 @@ DELIMITER $$
 CREATE PROCEDURE cadastrar_livro_genero(IN livro_codigo INT, IN genero_codigo INT)
 BEGIN
 	INSERT INTO livro_genero(livro_codigo, genero_codigo) VALUE (livro_codigo, genero_codigo);
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para cadastrar genero
@@ -437,7 +437,7 @@ DELIMITER $$
 CREATE PROCEDURE cadastrar_genero(IN nome VARCHAR(45))
 BEGIN
 	INSERT INTO genero(nome) VALUE (nome);
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para cadastrar livro_autor
@@ -445,7 +445,7 @@ DELIMITER $$
 CREATE PROCEDURE cadastrar_livro_autor(IN livro_codigo INT, autor_codigo INT)
 BEGIN
 	INSERT INTO livro_autor(livro_codigo, autor_codigo) VALUE (livro_codigo, autor_codigo);
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para cadastrar autor
@@ -453,7 +453,7 @@ DELIMITER $$
 CREATE PROCEDURE cadastrar_autor(IN nome VARCHAR(45))
 BEGIN
 	INSERT INTO autor(nome) VALUE (nome);
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para cadastrar edicao
@@ -461,7 +461,7 @@ DELIMITER $$
 CREATE PROCEDURE cadastrar_edicao(IN livro_codigo INT, IN editora_codigo INT, IN nome VARCHAR(45), IN data_publicacao DATE)
 BEGIN
 	INSERT INTO edicao(livro_codigo, editora_codigo, nome, data_publicacao) VALUE (livro_codigo, editora_codigo, nome, data_publicacao);
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para cadastrar editora
@@ -469,7 +469,7 @@ DELIMITER $$
 CREATE PROCEDURE cadastrar_editora(IN nome VARCHAR(45))
 BEGIN
 	INSERT INTO editora(nome) VALUE (nome);
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para alterar livro
@@ -529,7 +529,7 @@ BEGIN
 	ELSE 
 		SET mensagem = 'Falha ao alterar!';
 	END IF;
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para alterar nome do genero
@@ -549,7 +549,7 @@ BEGIN
 	ELSE 
 		SET mensagem = 'Falha ao alterar!';
 	END IF;
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para alterar nome do autor
@@ -569,7 +569,7 @@ BEGIN
 	ELSE 
 		SET mensagem = 'Falha ao alterar!';
 	END IF;
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para alterar nome da edicao
@@ -589,7 +589,7 @@ BEGIN
 	ELSE 
 		SET mensagem = 'Falha ao alterar!';
 	END IF;
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para alterar nome da editora
@@ -609,7 +609,7 @@ BEGIN
 	ELSE 
 		SET mensagem = 'Falha ao alterar!';
 	END IF;
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para remover livro
@@ -709,7 +709,7 @@ BEGIN
 	ELSE 
 		SET mensagem = 'Falha ao remover!';
 	END IF;
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para remover edição
@@ -729,7 +729,7 @@ BEGIN
 	ELSE 
 		SET mensagem = 'Falha ao remover!';
 	END IF;
-END$$
+END $$
 DELIMITER ;
 
 # Procedure para remover editora
