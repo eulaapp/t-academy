@@ -167,17 +167,17 @@ INSERT INTO cliente(nome) VALUES
 ('Angela Maria'),
 ('Elizabeth Soares');
 
-INSERT INTO reserva(data_reserva, cliente_codigo) VALUES
-('2022-08-02',1),
-('2021-07-15',8),
-('2022-06-24',5),
-('2022-02-14',3),
-('2022-03-27',6),
-('2021-04-12',1),
-('2022-04-26',2),
-('2021-08-22',7),
-('2022-09-23',9),
-('2022-08-15',1);
+INSERT INTO reserva(data_reserva, cliente_codigo, periodo, valor) VALUES
+('2022-08-02',1,15,5),
+('2021-07-15',8,15,5),
+('2022-06-24',5,15,5),
+('2022-02-14',3,15,5),
+('2022-03-27',6,15,5),
+('2021-04-12',1,15,5),
+('2022-04-26',2,15,5),
+('2021-08-22',7,15,5),
+('2022-09-23',9,15,5),
+('2022-08-15',1,15,5);
 
 INSERT INTO livro_reserva(livro_codigo,reserva_codigo) VALUES
 (2,2),
@@ -371,9 +371,9 @@ CREATE TRIGGER reserva_gratis
 AFTER INSERT ON cliente
 FOR EACH ROW
 BEGIN
-	INSERT INTO reserva(data_reserva, cliente_codigo, periodo, valor) VALUE (NOW(),NEW.codigo, NEW.periodo, NEW.valor);
-    INSERT INTO livro_reserva(livro_codigo, reserva_codigo) VALUE (1, (SELECT MAX(codigo) FROM reserva));
-END$
+	INSERT INTO reserva(data_reserva, cliente_codigo, valor, periodo) VALUES (NOW(), new.codigo, 0, 15);
+    INSERT INTO livro_reserva(livro_codigo, reserva_codigo) VALUES (1, (SELECT MAX(codigo) FROM reserva));
+END $
 
 DELIMITER ;
 
