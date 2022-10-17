@@ -1,3 +1,4 @@
+DROP DATABASE avaliacao;
 CREATE DATABASE avaliacao;
 USE avaliacao;
 
@@ -19,8 +20,7 @@ CREATE TABLE editora(
 CREATE TABLE livro(
 	codigo INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45),
-    valor DOUBLE,
-    data_publicacao DATE
+    valor DOUBLE
 );
 
 CREATE TABLE edicao(
@@ -28,7 +28,9 @@ CREATE TABLE edicao(
     livro_codigo INT,
     FOREIGN KEY(livro_codigo) REFERENCES livro(codigo),
     editora_codigo INT,
-    FOREIGN KEY(editora_codigo) REFERENCES editora(codigo)
+    FOREIGN KEY(editora_codigo) REFERENCES editora(codigo),
+    nome VARCHAR(45),
+    data_publicacao DATE
 );
 
 CREATE TABLE livro_autor(
@@ -47,14 +49,17 @@ CREATE TABLE livro_genero(
 
 CREATE TABLE cliente(
 	codigo INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(45)
+    nome VARCHAR(45),
+    data_nascimento DATE
 );
 
 CREATE TABLE reserva(
 	codigo INT PRIMARY KEY AUTO_INCREMENT,
     data_reserva DATE,
     cliente_codigo INT,
-    FOREIGN KEY(cliente_codigo) REFERENCES cliente(codigo)
+    FOREIGN KEY(cliente_codigo) REFERENCES cliente(codigo),
+    valor DOUBLE,
+    periodo INT
 );
 
 CREATE TABLE livro_reserva(
@@ -74,7 +79,8 @@ INSERT INTO autor(nome) VALUES
 ('Cornelia Funke'),
 ('Machado de Assis'),
 ('Clarice Lispector'),
-('Stephen King');
+('Stephen King'),
+('Emily Bronte');
 
 INSERT INTO genero(nome) VALUES
 ('Fantasia'),
@@ -101,7 +107,7 @@ INSERT INTO editora(nome) VALUES
 ('Saraiva'),
 ('Suma');
 
-INSERT INTO livro(nome, valor, data_publicacao) VALUES
+INSERT INTO livro(nome, valor) VALUES
 ('O Hobbit', 33.90),
 ('O morro dos ventos uivantes', 22.98),
 ('Orgulho e Preconceito', 53.30),
@@ -114,40 +120,42 @@ INSERT INTO livro(nome, valor, data_publicacao) VALUES
 ('A queda de gondolin', 40.39);
 
 INSERT INTO edicao(livro_codigo, editora_codigo, nome, data_publicacao) VALUES 
-(11,1, '1ª edição', '2019/07/15'),
-(12,4, 'Bolso de luxo', '2018/05/10'),
-(13,9,'1ª edição','2022/09/06'),
-(14,2,'2ª edição','2009/01/08'),
-(15,6,'1ª edição','2006/02/10'),
-(16,1,'Edição de colecionador','2021/12/20'),
-(17,8,'1ª edição','2012/11/19'),
-(18,1,'1ª edição','2019/03/19'),
-(19,1,'1ª edição','2020/07/15'),
-(20,1,'1ª edição','2018/09/03');
+(1,1, '1ª edição', '2019/07/15'),
+(2,4, 'Bolso de luxo', '2018/05/10'),
+(3,9,'1ª edição','2022/09/06'),
+(4,2,'2ª edição','2009/01/08'),
+(5,6,'1ª edição','2006/02/10'),
+(6,1,'Edição de colecionador','2021/12/20'),
+(7,8,'1ª edição','2012/11/19'),
+(8,1,'1ª edição','2019/03/19'),
+(9,1,'1ª edição','2020/07/15'),
+(10,1,'1ª edição','2018/09/03');
 
 INSERT INTO livro_autor(livro_codigo, autor_codigo) VALUES
-(11,1),
-(12,11),
-(13, 2),
-(14, 3),
-(15,7),
-(16,1),
-(17,10),
-(18,1),
-(19,1),
-(20,1);
+(1,1),
+(2,11),
+(3, 2),
+(4, 3),
+(5,7),
+(6,1),
+(7,10),
+(8,1),
+(9,1),
+(10,1);
+
+SELECT * FROm autor;
 
 INSERT INTO livro_genero(livro_codigo, genero_codigo) VALUES
-(11,1),
-(12, 2),
-(13,6),
-(14,4),
-(15,1),
-(16,1),
-(17,3),
-(18,1),
-(19,4),
-(20,4);
+(1,1),
+(2, 2),
+(3,6),
+(4,4),
+(5,1),
+(6,1),
+(7,3),
+(8,1),
+(9,4),
+(10,4);
 
 INSERT INTO cliente(nome) VALUES
 ('Denilson Lehner'),
@@ -174,16 +182,16 @@ INSERT INTO reserva(data_reserva, cliente_codigo) VALUES
 ('2022-08-15',1);
 
 INSERT INTO livro_reserva(livro_codigo,reserva_codigo) VALUES
-(12,2),
-(11,1),
-(13,5),
-(14,6),
-(15,8),
-(16,9),
-(17,4),
-(18,3),
-(19,7),
-(20,10);
+(2,2),
+(1,1),
+(3,5),
+(4,6),
+(5,8),
+(6,9),
+(7,4),
+(8,3),
+(9,7),
+(10,10);
 
 # 1ª view
 CREATE VIEW livro_cadastrados_tolkien AS
