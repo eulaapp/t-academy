@@ -143,8 +143,6 @@ INSERT INTO livro_autor(livro_codigo, autor_codigo) VALUES
 (9,1),
 (10,1);
 
-SELECT * FROm autor;
-
 INSERT INTO livro_genero(livro_codigo, genero_codigo) VALUES
 (1,1),
 (2, 2),
