@@ -360,6 +360,13 @@ WHERE livro.nome LIKE '%a%' AND genero.nome = 'Fantasia';
 # Livros com valor promocional
 SELECT nome, IF(valor < 30, 'Promoção', 'Preço normal') FROM livro;
 
+SELECT nome,
+CASE
+	WHEN DATE_FORMAT(NOW(),'%Y' - data_nascimento) >= 18 THEN 'Maior de idade'
+    ELSE 'Maior de idade'
+END AS 'Idade'
+FROM cliente;
+
 # Cadastrar primeira reserva gratuita
 DELIMITER $
 CREATE TRIGGER reserva_gratis
