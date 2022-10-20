@@ -16,30 +16,17 @@
     <div>
         <h1 class="titulo">Pagamento <img src="imagens/7013430_finance_bank_piggy_business_money_icon.png" alt=""></h1>
     </div>
-    <form>
-        <div class="container">
-            <div class="row-mb-3 offset-lg-3">
-                <label for="input-valor">Valor</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" id="input-valor">
-                </div>
-            </div>
-            <div class="form-check offset-lg-3">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="a-vista">
-                <label class="form-check-label" for="a-vista">
-                  À vista
-                </label>
-            </div>
-            <div class="form-check offset-lg-3">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="parcelado" checked>
-                <label class="form-check-label" for="parcelado">
-                  Parcelado
-                </label>
-            </div>
-            <div class="offset-lg-3">
-                <button type="submit" class="btn btn-primary">Ok</button>
-            </div>
-        </div>
-    </form>
+    <div class="formulario">
+        <form>
+            <label for="valor">Valor</label><br>
+            <input type="number" id="valor"><br>
+    
+            <input type="radio" id="a-vista" name="pagamento" class="opcao">
+            <label for="a-vista">À vista</label><br>
+    
+            <input type="radio" id="parcelado" name="pagamento" class="opcao">
+            <label for="parcelado">Parcelado</label>
+        </form>
+    </div>
 </body>
 </html>

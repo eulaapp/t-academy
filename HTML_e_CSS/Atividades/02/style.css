@@ -9,3 +9,19 @@ body {
     padding: 20px;
     font-family: 'Source Code Pro', monospace;
 }
+
+.form, label {
+    font-family: 'Source Code Pro', monospace;
+}
+
+.form, input {
+    border-radius: 5px;
+}
+
+.formulario {
+    margin-left: 40%;
+}
+
+.opcao {
+    margin-top: 20px;
+}
