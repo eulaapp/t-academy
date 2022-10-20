@@ -1,0 +1,15 @@
+body {
+    background-color: #FACFCE;
+}
+
+.menu {
+    margin-top: 50px;
+    margin-left: 550px;
+    margin-right: 550px;
+}
+
+fieldset {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+}
