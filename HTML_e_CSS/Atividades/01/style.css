@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Fuggles&family=Prata&display=swap');
+
+body {
+    background-color: #F2E4E4;
+}
+
+.titulo h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: 'Prata', serif;
+}
+
+.btn {
+    background-color: #F29BAB;
+    border-color: #F29BAB;
+}
+
+.btn:hover {
+    color: #F29BAB;
+    border-color: #F29BAB;
+    background-color: white;
+}
+
+.espacamento{
+    margin-top: 18%;
+}
