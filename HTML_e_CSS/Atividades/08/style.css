@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fuggles&family=Prata&family=Source+Code+Pro&family=Space+Mono&display=swap');
+
+body {
+    background-image: url(imagens/time-zones-concept-vector-illustration_107173-16699.webp);
+    background-size: cover;
+}
+
+.option {
+    padding: 20px;
+    background-color: #88A3E2;
+    margin: 20px;
+    margin-left: 500px;
+    margin-right: 500px;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Space Mono', monospace;
+}
+
+.input[date] {
+    border-radius: 5px;
+}
