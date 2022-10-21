@@ -1,0 +1,14 @@
+body {
+    /* background-color: #F2E4E4; */
+    background-image: url(imagens/pexels-photo-311269.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+label {
+    color: white;
+}
+
+.container {
+    margin-top: 50px;
+}

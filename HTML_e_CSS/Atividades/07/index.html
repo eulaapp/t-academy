@@ -6,20 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atividade 07</title>
 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
-        <label for="numero1">Digite o primeiro número:</label>
-        <input type="number" id="numero1"><br>
-
-        <label for="numero2">Digite o segundo número:</label>
-        <input type="number" id="numero2"><br>
-
-        <label for="numero3">Digite o terceiro número</label>
-        <input type="number" id="numero3"><br>
-
-        <input type="button" value="OK">
+    <div class="container">
+        <div>
+            <div class="mb-3 w-25">
+                <label for="numero1" class="form-label">Digite o primeiro número</label>
+                <input type="number" id="numero1" class="form-control"><br>
+              </div>
+              <div class="mb-3 w-25">
+                <label for="numero2" class="form-label">Digite o segundo número</label>
+                <input type="number" id="numero2" class="form-control"><br>
+              </div>
+              <div class="mb-3 w-25">
+                <label for="numero3" class="form-label">Digite o terceiro número</label>
+                <input type="number" id="numero3" class="form-control"><br>
+              </div>
+              <div class="mb-3 w-25">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              </div>
+        </div>
     </div>
 </body>
 </html>
