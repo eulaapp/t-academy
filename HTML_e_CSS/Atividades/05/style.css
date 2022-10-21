@@ -1,0 +1,22 @@
+body {
+    background-color: #F4E2DE;
+    background-image: url(imagens/2812115_bank_cash_coin_dollar_money_icon.png);
+}
+
+.opcoes {
+    margin-left: 600px;
+    margin-right: 600px;
+    margin-top: 50px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.titulo {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.input {
+    border-radius: 5px;
+}

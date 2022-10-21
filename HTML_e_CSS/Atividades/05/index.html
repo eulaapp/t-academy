@@ -6,30 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atividade 05</title>
 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
+    crossorigin="anonymous">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div>
+        <h1 class="titulo">Conversor de moeda</h1>
+    </div>
+    <div class="opcoes">
         <form>
             <label for="valor">Digite um número:</label>
-            <input type="number" id="valor"><br>
+            <input type="number" id="valor" name="valor"><br><br>
 
-            <input type="radio" id="dolar-real">
+            <input type="radio" id="dolar-real"  name="valor">
             <label for="dolar-real">Dólar para Real</label><br>
             
-            <input type="radio">
+            <input type="radio"  id="real-dolar" name="valor">
             <label for="real-dolar">Real para Dólar</label><br>
 
-            <input type="radio">
+            <input type="radio"  id="euro-dolar" name="valor">
             <label for="euro-dolar">Euro para Dólar</label><br>
 
-            <input type="radio">
+            <input type="radio"  id="real-euro" name="valor">
             <label for="real-euro">Real para Euro</label><br>
 
-            <input type="radio">
+            <input type="radio" id="libra-real" name="valor">
             <label for="libra-real">Libra para Real</label><br>
 
-            <input type="radio">
+            <input type="radio"  id="dolar-real" name="valor">
             <label for="dolar-real">Dólar para Real</label><br>
         </form>
     </div>
