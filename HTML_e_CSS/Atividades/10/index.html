@@ -6,22 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atividade 10</title>
 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
+    crossorigin="anonymous">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input type="button" value="Primeiro candidato"><br>
-    <input type="button" value="Segundo candidato"><br>
-    <input type="button" value="Terceiro candidato"><br>
-    <input type="button" value="Quarto candidato"><br>
-    <input type="button" value="Nulo"><br>
-
-    <p>Quantidade de votos no primeiro candidato:</p>
-    <p>Quantidade de votos no segundo candidato:</p>
-    <p>Quantidade de votos no terceiro candidato:</p>
-    <p>Quantidade de votos no quarto candidato:</p>
-    <p>Quantidade de votos nulos:</p>
-    <p>Quantidade total de votos:</p>
-    <p>Candidato com mais votos:</p>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                    <div class="candidatos">
+                        <button class="btn btn-primary" type="button">Brena</button>
+                        <button class="btn btn-primary" type="button">João</button>
+                        <button class="btn btn-primary" type="button">Ralf</button>
+                        <button class="btn btn-primary" type="button">Gustavo</button>
+                        <button class="btn btn-primary" type="button">Nulo</button>
+                    </div>
+                    <div class="resultados">
+                        <h1>Resultados</h1>
+                        <p>Brena</p>
+                        <p>João</p>
+                        <p>Ralf</p>
+                        <p>Gustavo</p>
+                        <p>Nulo</p>
+                        <p>Total de votos:</p>
+                        <p>Candidato com mais votos:</p>
+                    </div>
+            </div>
+            <div class="col-6 imgVotos">
+                <img src="imagens/6971162_vote_button_icon.png" alt="">
+            </div>
+        </div>
+    </div>
 </body>
 </html>
