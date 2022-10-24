@@ -13,63 +13,69 @@
     crossorigin="anonymous">
 
     <link rel="stylesheet" href="style.css">
+    
+    <script src="script.js"></script>
 </head>
 <body>
+
+    <h1 id="total"></h1>
     <div class="menu">
         <fieldset>
             <legend>Selecione os itens do cardápio <img src="imagens/9476002_restaurant_burgers_food_cafe_icon_64px.png" alt="">
             </legend>
     
             <div>
-                <input type="checkbox" id="coxinha" name="coxinha">
+                <input type="checkbox" id="coxinha" name="coxinha" onclick="valorTotal(this.checked, 1)">
                 <label for="coxinha">Coxinha</label>
             </div>
     
             <div>
-                <input type="checkbox" id="pastel" name="pastel">
+                <input type="checkbox" id="pastel" name="pastel" onclick="valorTotal(this.checked, 2)">
                 <label for="pastel">Pastel</label>
             </div>
     
             <div>
-                <input type="checkbox" id="caldo-de-cana" name="caldo-de-cana">
+                <input type="checkbox" id="caldo-de-cana" name="caldo-de-cana" onclick="valorTotal(this.checked, 3)">
                 <label for="caldo-de-cana">Caldo de cana</label>
             </div>
     
             <div>
-                <input type="checkbox" id="x-salada" name="x-salada">
+                <input type="checkbox" id="x-salada" name="x-salada" onclick="valorTotal(this.checked, 4)">
                 <label for="x-salada">X-salada</label>
             </div>
     
             <div>
-                <input type="checkbox" id="espetinho" name="espetinho">
+                <input type="checkbox" id="espetinho" name="espetinho" onclick="valorTotal(this.checked, 5)">
                 <label for="espetinho">Espetinho</label>
             </div>
     
             <div>
-                <input type="checkbox" id="misto-quente" name="misto-quente">
+                <input type="checkbox" id="misto-quente" name="misto-quente" onclick="valorTotal(this.checked, 6)">
                 <label for="misto-quente">Misto-quente</label>
             </div>
     
             <div>
-                <input type="checkbox" id="folhado" name="folhado">
+                <input type="checkbox" id="folhado" name="folhado" onclick="valorTotal(this.checked, 7)">
                 <label for="folhado">Folhado</label>
             </div>
     
             <div>
-                <input type="checkbox" id="bolinho-de-carne" name="bolinho-de-carne">
+                <input type="checkbox" id="bolinho-de-carne" name="bolinho-de-carne" onclick="valorTotal(this.checked, 8)">
                 <label for="bolinho-de-carne">Bolinho de carne</label>
             </div>
     
             <div>
-                <input type="checkbox" id="suco-laranja" name="suco-laranja">
+                <input type="checkbox" id="suco-laranja" name="suco-laranja" onclick="valorTotal(this.checked, 9)">
                 <label for="suco-laranja">Suco de laranja</label>
             </div>
     
             <div>
-                <input type="checkbox" id="suco-abacaxi" name="suco-abacaxi">
+                <input type="checkbox" id="suco-abacaxi" name="suco-abacaxi" onclick="valorTotal(this.checked, 10)">
                 <label for="suco-abacaxi">Suco de abacaxi</label>
             </div>
         </fieldset>
+
+        <div id="total"></div>
     </div>
 </body>
 </html>
