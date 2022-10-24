@@ -11,6 +11,8 @@
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     
     <link rel="stylesheet" href="style.css">
+
+    <script src="script.js"></script>
 </head>
 <body>
     <div>
@@ -25,7 +27,9 @@
             <label for="a-vista">À vista</label><br>
     
             <input type="radio" id="parcelado" name="pagamento" class="opcao">
-            <label for="parcelado">Parcelado</label>
+            <label for="parcelado">Parcelado</label><br><br>
+
+            <input type="button" onclick="aplicarDesconto()" class="btn btn-primary" value="Enviar">
         </form>
     </div>
 </body>
