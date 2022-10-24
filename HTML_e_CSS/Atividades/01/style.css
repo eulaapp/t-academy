@@ -25,3 +25,7 @@ body {
 .espacamento{
     margin-top: 18%;
 }
+
+.alert {
+    text-align: center;
+}
