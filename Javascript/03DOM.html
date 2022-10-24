@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+
+    <script>
+
+        // Ao carregar
+        window.onload = function() {
+            // Obter o elemento h1
+            let  h1 = document.getElementsByTagName('h1')[0];
+
+            // obter o elemento via classe
+            let classe = document.getElementsByClassName('titulo')[0];
+
+            // obter elemento pelo id
+            let id = document.getElementById('titulo');
+            
+            // Alterar o texto do h1
+            //h1.innerText = 'Olá, mundo!';
+            h1.innerHTML = 'Olá, mundo <br> Tudo bem?';
+            h1.style.color = 'red';
+
+            // Alterar o texto da classe título
+            classe.innerText = 'Alterar texto...';
+
+            // alterar o texto pelo id do titulo
+            id.innerText = 'Elemento contendo um identificador';
+
+        }
+
+    </script>
+
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <h1 class="titulo">Segundo h1</h1>
+    <h1 id = 'titulo'>Terceiro h1</h1>
+</body>
+</html>
