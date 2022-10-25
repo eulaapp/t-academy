@@ -20,16 +20,16 @@
         <div class="row">
             <div class="col-6">
                     <div class="candidatos">
-                        <button class="btn btn-primary" type="button">Brena</button>
-                        <button class="btn btn-primary" type="button">João</button>
-                        <button class="btn btn-primary" type="button">Ralf</button>
-                        <button class="btn btn-primary" type="button">Gustavo</button>
-                        <button class="btn btn-primary" type="button">Nulo</button>
+                        <button class="btn btn-primary" type="button" id="candidato1" onclick="votacao(this.value)">Brena</button>
+                        <button class="btn btn-primary" type="button" id="candidato2" onclick="votacao(this.value)">João</button>
+                        <button class="btn btn-primary" type="button" id="candidato3" onclick="votacao(this.value)">Ralf</button>
+                        <button class="btn btn-primary" type="button" id="candidato4" onclick="votacao(this.value)">Gustavo</button>
+                        <button class="btn btn-primary" type="button" id="candidato5" onclick="votacao(this.value)">Nulo</button>
                     </div>
                     <div class="resultados">
                         <h1>Resultados</h1>
-                        <p>Brena</p>
-                        <p>João</p>
+                        <p>Brena</p><p id="brena"></p>
+                        <p>João</p><p id="joao"></p>
                         <p>Ralf</p>
                         <p>Gustavo</p>
                         <p>Nulo</p>
