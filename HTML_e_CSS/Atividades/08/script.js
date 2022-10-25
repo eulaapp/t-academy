@@ -35,5 +35,5 @@ function horarioBerlim() {
 
     let horaBerlim = (parseInt(horaAtual[0])+5);
 
-    alert("Horário Tóquio " + horaBerlim + ":" + horaAtual[1]);
+    alert("Horário Berlim " + horaBerlim + ":" + horaAtual[1]);
 }
