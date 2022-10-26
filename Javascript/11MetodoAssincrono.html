@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método Assíncrono</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <div id="inicio"></div>
+    <div id="conteudo"></div>
+    <div id="termino"></div>
+
+    <script>
+        function acao() {
+            // início
+            let di = new Date();
+            document.getElementById("inicio").innerText = di
+
+            // conteúdo
+            for (let i = 1; i < 152; i++) {
+                fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+                .then(retorno => retorno.json())
+                .then(retorno_convertido => {
+                    document.getElementById("conteudo").innerHTML += retorno_convertido.name + "<hr>"
+                })
+            }
+
+            // termino
+            let dt = new Date()
+            document.getElementById("termino").innerText = dt
+        }
+
+        acao()
+    </script>
+</body>
+</html>
