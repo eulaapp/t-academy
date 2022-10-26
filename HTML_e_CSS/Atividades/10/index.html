@@ -20,21 +20,21 @@
         <div class="row">
             <div class="col-6">
                     <div class="candidatos">
-                        <button class="btn btn-primary" type="button" id="candidato1" onclick="votacao(this.value)">Brena</button>
-                        <button class="btn btn-primary" type="button" id="candidato2" onclick="votacao(this.value)">João</button>
-                        <button class="btn btn-primary" type="button" id="candidato3" onclick="votacao(this.value)">Ralf</button>
-                        <button class="btn btn-primary" type="button" id="candidato4" onclick="votacao(this.value)">Gustavo</button>
-                        <button class="btn btn-primary" type="button" id="candidato5" onclick="votacao(this.value)">Nulo</button>
+                        <button class="btn btn-primary" type="button" id="candidato1" onclick="votacao(this.innerHTML)">Brena</button>
+                        <button class="btn btn-primary" type="button" id="candidato2" onclick="votacao(this.innerHTML)">João</button>
+                        <button class="btn btn-primary" type="button" id="candidato3" onclick="votacao(this.innerHTML)">Ralf</button>
+                        <button class="btn btn-primary" type="button" id="candidato4" onclick="votacao(this.innerHTML)">Gustavo</button>
+                        <button class="btn btn-primary" type="button" id="candidato5" onclick="votacao(this.innerHTML)">Nulo</button>
                     </div>
                     <div class="resultados">
                         <h1>Resultados</h1>
                         <p>Brena</p><p id="brena"></p>
                         <p>João</p><p id="joao"></p>
-                        <p>Ralf</p>
-                        <p>Gustavo</p>
-                        <p>Nulo</p>
-                        <p>Total de votos:</p>
-                        <p>Candidato com mais votos:</p>
+                        <p>Ralf</p><p id="ralf"></p>
+                        <p>Gustavo</p><p id="gustavo"></p>
+                        <p>Nulo</p><p id="nulo"></p>
+                        <p>Total de votos:</p><p id="totalVotos"></p>
+                        <p>Candidato com mais votos:</p><p id="candidatoMaisVotado"></p>
                     </div>
             </div>
             <div class="col-6 imgVotos">
