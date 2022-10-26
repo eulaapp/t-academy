@@ -16,18 +16,20 @@
     <div id="termino"></div>
 
     <script>
-        function acao() {
+        async function acao() {
             // início
             let di = new Date();
             document.getElementById("inicio").innerText = di
 
             // conteúdo
-            for (let i = 1; i < 152; i++) {
-                fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
-                .then(retorno => retorno.json())
-                .then(retorno_convertido => {
-                    document.getElementById("conteudo").innerHTML += retorno_convertido.name + "<hr>"
-                })
+            for (let i = 1; i < 252; i++) {
+                let retorno = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+
+                let retorno_convertido = await retorno.json()
+
+                document.getElementById("conteudo").innerHTML += `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${i}.gif">`;
+                document.getElementById("conteudo").innerHTML += retorno_convertido.name + "<hr>"
+                
             }
 
             // termino
