@@ -1,86 +1,86 @@
-let carrinho = [];
+let carrinho = []
 
 function criarListaProdutos() {
-  let main = document.getElementById("main-carrinho");
+  let main = document.getElementById("main-carrinho")
 
-  let listarProdutos = document.createElement("div");
-  listarProdutos.classList.add("row");
-  listarProdutos.id = "listarProdutos";
+  let listarProdutos = document.createElement("div")
+  listarProdutos.classList.add("row")
+  listarProdutos.id = "listarProdutos"
 
-  main.appendChild(listarProdutos);
+  main.appendChild(listarProdutos)
 
-  return listarProdutos;
+  return listarProdutos
 }
 
 function listarProdutosCarrinho() {
-  let listarProdutos = criarListaProdutos();
+  let listarProdutos = criarListaProdutos()
 
-  let subTitulo = document.createElement("h2");
-  subTitulo.classList.add("total");
+  let subTitulo = document.createElement("h2")
+  subTitulo.classList.add("total")
 
-  subTitulo.innerText = "Total: " + totalCarrinho();
+  subTitulo.innerText = "Total: " + totalCarrinho()
 
-  listarProdutos.appendChild(subTitulo);
+  listarProdutos.appendChild(subTitulo)
 
   for (let i = 0; i < carrinho.length; i++) {
-    let coluna = document.createElement("div");
-    coluna.classList.add("col-3");
+    let coluna = document.createElement("div")
+    coluna.classList.add("col-3")
 
-    let card = document.createElement("div");
-    card.classList.add("card", "prod");
+    let card = document.createElement("div")
+    card.classList.add("card", "prod")
 
-    let titulo = document.createElement("h1");
-    titulo.innerText = carrinho[i].produto.nome.substring(0, 20);
+    let titulo = document.createElement("h1")
+    titulo.innerText = carrinho[i].produto.nome.substring(0, 20)
 
-    let imagem = document.createElement("img");
-    imagem.src = "imagens/" + carrinho[i].produto.imagem;
-    imagem.alt = carrinho[i].nome;
+    let imagem = document.createElement("img")
+    imagem.src = "imagens/" + carrinho[i].produto.imagem
+    imagem.alt = carrinho[i].nome
 
-    let valor = document.createElement("p");
+    let valor = document.createElement("p")
     valor.innerText = carrinho[i].produto.valor.toLocaleString("pt-br", {
       style: "currency",
       currency: "BRL",
     });
 
-    let botaoExcluir = document.createElement("button");
-    botaoExcluir.classList.add("btn", "btn-primary");
-    botaoExcluir.innerHTML = "Remover";
-    botaoExcluir.value = i;
+    let botaoExcluir = document.createElement("button")
+    botaoExcluir.classList.add("btn", "btn-primary")
+    botaoExcluir.innerHTML = "Remover"
+    botaoExcluir.value = i
     botaoExcluir.onclick = function () {
-      removerProdutoCarrinho(this.value);
+      removerProdutoCarrinho(this.value)
     };
 
-    let aumentarQuantidade = document.createElement("button");
-    aumentarQuantidade.classList.add("btn", "btn-primary", "add-remove");
-    aumentarQuantidade.innerHTML = "+";
-    aumentarQuantidade.value = i;
+    let aumentarQuantidade = document.createElement("button")
+    aumentarQuantidade.classList.add("btn", "btn-primary", "add-remove")
+    aumentarQuantidade.innerHTML = "+"
+    aumentarQuantidade.value = i
     aumentarQuantidade.onclick = function () {
-      adicionarProdutosCarrinho(this.value);
+      adicionarProdutosCarrinho(this.value)
     };
 
-    let diminuirQuantidade = document.createElement("button");
-    diminuirQuantidade.classList.add("btn", "btn-primary", "add-remove");
-    diminuirQuantidade.innerHTML = "-";
-    diminuirQuantidade.value = i;
+    let diminuirQuantidade = document.createElement("button")
+    diminuirQuantidade.classList.add("btn", "btn-primary", "add-remove")
+    diminuirQuantidade.innerHTML = "-"
+    diminuirQuantidade.value = i
     diminuirQuantidade.onclick = function () {
-      removerQuantidadeProdutosCarrinho(this.value);
+      removerQuantidadeProdutosCarrinho(this.value)
     };
 
-    let qtdCarrinho = document.createElement("p");
+    let qtdCarrinho = document.createElement("p")
     qtdCarrinho.classList.add("p");
-    qtdCarrinho.innerHTML = carrinho[i].quantidade;
+    qtdCarrinho.innerHTML = carrinho[i].quantidade
 
-    card.appendChild(imagem);
-    card.appendChild(titulo);
-    card.appendChild(valor);
-    card.appendChild(botaoExcluir);
-    card.appendChild(aumentarQuantidade);
-    card.appendChild(diminuirQuantidade);
-    card.appendChild(qtdCarrinho);
+    card.appendChild(imagem)
+    card.appendChild(titulo)
+    card.appendChild(valor)
+    card.appendChild(botaoExcluir)
+    card.appendChild(aumentarQuantidade)
+    card.appendChild(diminuirQuantidade)
+    card.appendChild(qtdCarrinho)
 
-    coluna.appendChild(card);
+    coluna.appendChild(card)
 
-    listarProdutos.appendChild(coluna);
+    listarProdutos.appendChild(coluna)
   }
 }
 
@@ -93,32 +93,32 @@ function totalCarrinho() {
   return total.toLocaleString("pt-br", {
     style: "currency",
     currency: "BRL",
-  });;
+  });
 }
 
 function adicionarProdutosCarrinho(index) {
-  let vetorTemp = JSON.parse(localStorage.getItem("produto"));
+  let vetorTemp = JSON.parse(localStorage.getItem("produto"))
 
   if (vetorTemp[index].qtd < carrinho[index].produto.estoque) {
-    vetorTemp[index].qtd++;
+    vetorTemp[index].qtd++
 
-    localStorage.setItem("produto", JSON.stringify(vetorTemp));
+    localStorage.setItem("produto", JSON.stringify(vetorTemp))
 
-    location.reload();
+    location.reload()
   } else {
     alert(
       "O número de produtos adicionados é maior que o do estoque disponível"
-    );
+    )
   }
 }
 
 function removerQuantidadeProdutosCarrinho(index) {
-  let vetorTemp = JSON.parse(localStorage.getItem("produto"));
+  let vetorTemp = JSON.parse(localStorage.getItem("produto"))
 
   if (vetorTemp[index].qtd > 0) {
-    vetorTemp[index].qtd--;
-    localStorage.setItem("produto", JSON.stringify(vetorTemp));
-    location.reload();
+    vetorTemp[index].qtd--
+    localStorage.setItem("produto", JSON.stringify(vetorTemp))
+    location.reload()
 
     if (vetorTemp[index].qtd == 0) {
         removerProdutoCarrinho(index)
@@ -127,66 +127,66 @@ function removerQuantidadeProdutosCarrinho(index) {
 }
 
 function removerProdutoCarrinho(index) {
-  let vetorTemp = JSON.parse(localStorage.getItem("produto"));
+  let vetorTemp = JSON.parse(localStorage.getItem("produto"))
 
-  vetorTemp.splice(index, 1);
+  vetorTemp.splice(index, 1)
 
-  localStorage.setItem("produto", JSON.stringify(vetorTemp));
+  localStorage.setItem("produto", JSON.stringify(vetorTemp))
 
-  location.reload();
+  location.reload()
 }
 
 window.onload = function () {
-  let vetor = JSON.parse(localStorage.getItem("produto"));
+  let vetor = JSON.parse(localStorage.getItem("produto"))
 
   for (let i = 0; i < vetor.length; i++) {
-    let indice = vetor[i].id;
+    let indice = vetor[i].id
     carrinho.push({
       produto: produtos[indice],
       quantidade: vetor[i].qtd,
     });
   }
 
-  listarProdutosCarrinho();
+  listarProdutosCarrinho()
   totalCarrinho()
 };
 
 function pesquisar(e) {
   if (e.keyCode == 13) {
-    pesquisarProdutos(document.getElementById("texto").value);
+    pesquisarProdutos(document.getElementById("texto").value)
   }
 }
 
 function pesquisarProdutos(produto) {
-  let listarProdutos = document.getElementById("listarProdutos");
-  listarProdutos.remove();
+  let listarProdutos = document.getElementById("listarProdutos")
+  listarProdutos.remove()
 
-  listarProdutos = criarListaProdutos();
+  listarProdutos = criarListaProdutos()
 
   for (let i = 0; i < produtos.length; i++) {
     if (produtos[i].nome.toLowerCase().includes(produto.toLowerCase())) {
-      let coluna = document.createElement("div");
-      coluna.classList.add("col-3");
+      let coluna = document.createElement("div")
+      coluna.classList.add("col-3")
 
-      let card = document.createElement("div");
-      card.classList.add("card", "prod");
+      let card = document.createElement("div")
+      card.classList.add("card", "prod")
 
-      let titulo = document.createElement("h1");
-      titulo.innerText = produtos[i].nome.substring(0, 20);
+      let titulo = document.createElement("h1")
+      titulo.innerText = produtos[i].nome.substring(0, 20)
 
-      let imagem = document.createElement("img");
-      imagem.src = "imagens/" + produtos[i].imagem;
-      imagem.alt = produtos[i].nome;
+      let imagem = document.createElement("img")
+      imagem.src = "imagens/" + produtos[i].imagem
+      imagem.alt = produtos[i].nome
 
-      let valor = document.createElement("p");
+      let valor = document.createElement("p")
       valor.innerText = produtos[i].valor.toLocaleString("pt-br", {
         style: "currency",
         currency: "BRL",
       });
 
-      let botao = document.createElement("button");
-      botao.classList.add("btn", "btn-primary");
-      botao.innerHTML = "Comprar";
+      let botao = document.createElement("button")
+      botao.classList.add("btn", "btn-primary")
+      botao.innerHTML = "Comprar"
       botao.value = i
       botao.onclick = function () {
         if (localStorage.getItem("produto") == undefined) {
@@ -195,83 +195,83 @@ function pesquisarProdutos(produto) {
               id: this.value,
               qtd: 1,
             },
-          ];
+          ]
   
-          localStorage.setItem("produto", JSON.stringify(objProdutoSelecionado));
+          localStorage.setItem("produto", JSON.stringify(objProdutoSelecionado))
         } else {
-          let vetorProd = JSON.parse(localStorage.getItem("produto"));
+          let vetorProd = JSON.parse(localStorage.getItem("produto"))
           let indice = vetorProd.findIndex((e) => {
-            return e.id == this.value;
-          });
+            return e.id == this.value
+          })
   
           if (indice == -1) {
             let objProdutoSelecionado = {
               id: this.value,
               qtd: 1,
-            };
+            }
   
-            vetorProd.push(objProdutoSelecionado);
+            vetorProd.push(objProdutoSelecionado)
   
-            localStorage.setItem("produto", JSON.stringify(vetorProd));
+            localStorage.setItem("produto", JSON.stringify(vetorProd))
           } else {
-            let objProdutoSelecionado = vetorProd[indice];
-            objProdutoSelecionado.qtd++;
+            let objProdutoSelecionado = vetorProd[indice]
+            objProdutoSelecionado.qtd++
   
-            vetorProd[indice] = objProdutoSelecionado;
+            vetorProd[indice] = objProdutoSelecionado
   
-            localStorage.setItem("produto", JSON.stringify(vetorProd));
+            localStorage.setItem("produto", JSON.stringify(vetorProd))
           }
         }
       };
 
-      card.appendChild(imagem);
-      card.appendChild(titulo);
-      card.appendChild(valor);
-      card.appendChild(botao);
-      coluna.appendChild(card);
+      card.appendChild(imagem)
+      card.appendChild(titulo)
+      card.appendChild(valor)
+      card.appendChild(botao)
+      coluna.appendChild(card)
 
-      listarProdutos.appendChild(coluna);
+      listarProdutos.appendChild(coluna)
     }
   }
 }
 
 function filtrarProdutos(segmento) {
-  let listarProdutos = document.getElementById("listarProdutos");
-  listarProdutos.remove();
+  let listarProdutos = document.getElementById("listarProdutos")
+  listarProdutos.remove()
 
-  listarProdutos = criarListaProdutos();
+  listarProdutos = criarListaProdutos()
 
-  let subTitulo = document.createElement("h2");
-  subTitulo.classList.add("subTitulo");
+  let subTitulo = document.createElement("h2")
+  subTitulo.classList.add("subTitulo")
 
-  subTitulo.innerText = segmento;
+  subTitulo.innerText = segmento
 
-  listarProdutos.appendChild(subTitulo);
+  listarProdutos.appendChild(subTitulo)
 
   for (let i = 0; i < produtos.length; i++) {
     if (produtos[i].segmento === segmento) {
-      let coluna = document.createElement("div");
-      coluna.classList.add("col-3");
+      let coluna = document.createElement("div")
+      coluna.classList.add("col-3")
 
-      let card = document.createElement("div");
-      card.classList.add("card", "prod");
+      let card = document.createElement("div")
+      card.classList.add("card", "prod")
 
-      let titulo = document.createElement("h1");
-      titulo.innerText = produtos[i].nome.substring(0, 20);
+      let titulo = document.createElement("h1")
+      titulo.innerText = produtos[i].nome.substring(0, 20)
 
-      let imagem = document.createElement("img");
-      imagem.src = "imagens/" + produtos[i].imagem;
-      imagem.alt = produtos[i].nome;
+      let imagem = document.createElement("img")
+      imagem.src = "imagens/" + produtos[i].imagem
+      imagem.alt = produtos[i].nome
 
-      let valor = document.createElement("p");
+      let valor = document.createElement("p")
       valor.innerText = produtos[i].valor.toLocaleString("pt-br", {
         style: "currency",
         currency: "BRL",
       });
 
-      let botao = document.createElement("button");
-      botao.classList.add("btn", "btn-primary");
-      botao.innerHTML = "Comprar";
+      let botao = document.createElement("button")
+      botao.classList.add("btn", "btn-primary")
+      botao.innerHTML = "Comprar"
       botao.value = i
       botao.onclick = function () {
         if (localStorage.getItem("produto") == undefined) {
@@ -280,43 +280,43 @@ function filtrarProdutos(segmento) {
               id: this.value,
               qtd: 1,
             },
-          ];
+          ]
   
-          localStorage.setItem("produto", JSON.stringify(objProdutoSelecionado));
+          localStorage.setItem("produto", JSON.stringify(objProdutoSelecionado))
         } else {
-          let vetorProd = JSON.parse(localStorage.getItem("produto"));
+          let vetorProd = JSON.parse(localStorage.getItem("produto"))
           let indice = vetorProd.findIndex((e) => {
-            return e.id == this.value;
-          });
+            return e.id == this.value
+          })
   
           if (indice == -1) {
             let objProdutoSelecionado = {
               id: this.value,
               qtd: 1,
-            };
+            }
   
-            vetorProd.push(objProdutoSelecionado);
+            vetorProd.push(objProdutoSelecionado)
   
-            localStorage.setItem("produto", JSON.stringify(vetorProd));
+            localStorage.setItem("produto", JSON.stringify(vetorProd))
           } else {
-            let objProdutoSelecionado = vetorProd[indice];
-            objProdutoSelecionado.qtd++;
+            let objProdutoSelecionado = vetorProd[indice]
+            objProdutoSelecionado.qtd++
   
-            vetorProd[indice] = objProdutoSelecionado;
+            vetorProd[indice] = objProdutoSelecionado
   
-            localStorage.setItem("produto", JSON.stringify(vetorProd));
+            localStorage.setItem("produto", JSON.stringify(vetorProd))
           }
         }
-      };
+      }
 
-      card.appendChild(imagem);
-      card.appendChild(titulo);
-      card.appendChild(valor);
-      card.appendChild(botao);
+      card.appendChild(imagem)
+      card.appendChild(titulo)
+      card.appendChild(valor)
+      card.appendChild(botao)
 
-      coluna.appendChild(card);
+      coluna.appendChild(card)
 
-      listarProdutos.appendChild(coluna);
+      listarProdutos.appendChild(coluna)
     }
   }
 }
