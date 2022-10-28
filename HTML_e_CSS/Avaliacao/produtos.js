@@ -59,7 +59,7 @@ produtos.push(
     },
     {
         'codigo': 8,
-        'nome': 'Loção Tônica Multifuncional, PAYOT, Amarelo Transparente',
+        'nome': 'Loção Tônica Multifuncional',
         'imagem': 'tonico.webp',
         'estoque': 25,
         'segmento': 'Beleza',
@@ -67,7 +67,7 @@ produtos.push(
     },
     {
         'codigo': 9,
-        'nome': 'Tônico Principia 7% Ácido Lático + 1% Ácido Salicílico',
+        'nome': 'Tônico Principia 7%',
         'imagem': 'acido.jpg',
         'estoque': 12,
         'segmento': 'Beleza',
@@ -75,7 +75,7 @@ produtos.push(
     },
     {
         'codigo': 10,
-        'nome': 'Máscara Facial Mar Morto, Dead Sea Minerals Mask, Océane, Océane, Verde',
+        'nome': 'Máscara Facial Mar Morto',
         'imagem': 'mascara.webp',
         'estoque': 12,
         'segmento': 'Beleza',
@@ -83,7 +83,7 @@ produtos.push(
     },
     {
         'codigo': 11,
-        'nome': 'Panela Sauté Grand 24Cm Flavorstone Polishop Flavorstone',
+        'nome': 'Panela Sauté Grand',
         'imagem': 'panela.jpg',
         'estoque': 12,
         'segmento': 'Cozinha',
@@ -91,7 +91,7 @@ produtos.push(
     },
     {
         'codigo': 12,
-        'nome': 'Fritadeira Elétrica - Airfryer Viva - Philips Walita - Black Edition | 127V',
+        'nome': 'Fritadeira Elétrica',
         'imagem': 'airfryer.webp',
         'estoque': 12,
         'segmento': 'Cozinha',
@@ -99,7 +99,7 @@ produtos.push(
     },
     {
         'codigo': 13,
-        'nome': 'Faqueiro Inox 30pc Ipanema Men Tramontina Turquesa No Voltagev',
+        'nome': 'Faqueiro Inox 30pc',
         'imagem': 'faqueiro.webp',
         'estoque': 72,
         'segmento': 'Cozinha',
@@ -115,7 +115,7 @@ produtos.push(
     },
     {
         'codigo': 15,
-        'nome': 'Kit com 6 pratos fundos, Coleção Especiarias, Acervo Panelinha',
+        'nome': 'Kit com 6 pratos fundos',
         'imagem': 'pratos.jpg',
         'estoque': 10,
         'segmento': 'Cozinha',
@@ -123,7 +123,7 @@ produtos.push(
     },
     {
         'codigo': 16,
-        'nome': 'Batedeira Planetária, Preto, 220v, Oster',
+        'nome': 'Batedeira Planetária',
         'imagem': 'batedeira.webp',
         'estoque': 23,
         'segmento': 'Cozinha',
@@ -131,7 +131,7 @@ produtos.push(
     },
     {
         'codigo': 17,
-        'nome': 'Liquidificador Mondial, Turbo Power 550W, 220V, Preto, 1,6L - L-99 FB',
+        'nome': 'Liquidificador Mondial',
         'imagem': 'liquidificador.webp',
         'estoque': 33,
         'segmento': 'Cozinha',
@@ -171,7 +171,7 @@ produtos.push(
     },
     {
         'codigo': 22,
-        'nome': 'Vestido Midi Decote V com Saia em Camadas',
+        'nome': 'Vestido Midi Decote',
         'imagem': 'vestido-2.webp',
         'estoque': 10,
         'segmento': 'Vestuário',
@@ -179,7 +179,7 @@ produtos.push(
     },
     {
         'codigo': 23,
-        'nome': 'Sandália Salto Alto Duas Tiras Acolchoadas',
+        'nome': 'Sandália Salto',
         'imagem': 'sandalia.webp',
         'estoque': 32,
         'segmento': 'Vestuário',
@@ -187,7 +187,7 @@ produtos.push(
     },
     {
         'codigo': 24,
-        'nome': 'Sandália Salto Escultural Multi Tiras Finas',
+        'nome': 'Sandália Salto',
         'imagem': 'sandalia-2.webp',
         'estoque': 15,
         'segmento': 'Vestuário',
@@ -195,7 +195,7 @@ produtos.push(
     },
     {
         'codigo': 25,
-        'nome': 'Top Cropped de Decote Profundo e Amarração na Cintura',
+        'nome': 'Top Cropped de Decote',
         'imagem': 'cropped.png',
         'estoque': 25,
         'segmento': 'Vestuário',
@@ -203,7 +203,7 @@ produtos.push(
     },
     {
         'codigo': 26,
-        'nome': 'Hope Top Regata Alongado com Bojo Removivel em Renda',
+        'nome': 'Hope Top Regata',
         'imagem': 'hope.webp',
         'estoque': 10,
         'segmento': 'Vestuário',
@@ -219,7 +219,7 @@ produtos.push(
     },
     {
         'codigo': 28,
-        'nome': 'Blusa Estampada com Gola Laço e Mangas Bufantes',
+        'nome': 'Blusa Estampada',
         'imagem': 'blusa.webp',
         'estoque': 10,
         'segmento': 'Vestuário',
@@ -227,7 +227,7 @@ produtos.push(
     },
     {
         'codigo': 29,
-        'nome': 'Calça Reta Malha Piquet Bolsos Cargos',
+        'nome': 'Calça Reta Malha',
         'imagem': 'calca.jpg',
         'estoque': 10,
         'segmento': 'Vestuário',

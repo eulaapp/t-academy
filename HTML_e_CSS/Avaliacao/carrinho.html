@@ -18,8 +18,7 @@
 
     <script src="produtos.js"></script>
     <script src="carrinho.js"></script>
-    
-    
+
 </head>
 <body>
 
@@ -39,14 +38,14 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#" onclick="filtrarProdutos('Beleza')">Beleza</a></li>
-                  <li><a class="dropdown-item" href="index.html" onclick="filtrarProdutos('Cozinha')">Cozinha</a></li>
-                  <li><a class="dropdown-item" href="index.html" onclick="filtrarProdutos('Vestuário')">Vestuário</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="filtrarProdutos('Cozinha')">Cozinha</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="filtrarProdutos('Vestuário')">Vestuário</a></li>
                 </ul>
               </li>
               <li class="nav-item">
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  <input class="form-control me-2" onkeyup="pesquisar(event)" type="search" placeholder="Pesquisar produto" aria-label="Search" id="texto">
+                  <input type="button" class="btn btn-outline-success"  onclick="pesquisarProdutos(document.getElementById('texto').value)" value="Pesquisar">
                   </form>
               </li>
             </ul>

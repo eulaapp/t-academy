@@ -128,6 +128,42 @@ function pesquisarProdutos(produto) {
       let botao = document.createElement("button");
       botao.classList.add("btn", "btn-primary");
       botao.innerHTML = "Comprar";
+      botao.value = i
+      botao.onclick = function () {
+        if (localStorage.getItem("produto") == undefined) {
+          let objProdutoSelecionado = [
+            {
+              id: this.value,
+              qtd: 1,
+            },
+          ];
+  
+          localStorage.setItem("produto", JSON.stringify(objProdutoSelecionado));
+        } else {
+          let vetorProd = JSON.parse(localStorage.getItem("produto"));
+          let indice = vetorProd.findIndex((e) => {
+            return e.id == this.value;
+          });
+  
+          if (indice == -1) {
+            let objProdutoSelecionado = {
+              id: this.value,
+              qtd: 1,
+            };
+  
+            vetorProd.push(objProdutoSelecionado);
+  
+            localStorage.setItem("produto", JSON.stringify(vetorProd));
+          } else {
+            let objProdutoSelecionado = vetorProd[indice];
+            objProdutoSelecionado.qtd++;
+  
+            vetorProd[indice] = objProdutoSelecionado;
+  
+            localStorage.setItem("produto", JSON.stringify(vetorProd));
+          }
+        }
+      };
 
       card.appendChild(imagem);
       card.appendChild(titulo);
@@ -177,6 +213,42 @@ function filtrarProdutos(segmento) {
       let botao = document.createElement("button");
       botao.classList.add("btn", "btn-primary");
       botao.innerHTML = "Comprar";
+      botao.value = i
+      botao.onclick = function () {
+        if (localStorage.getItem("produto") == undefined) {
+          let objProdutoSelecionado = [
+            {
+              id: this.value,
+              qtd: 1,
+            },
+          ];
+  
+          localStorage.setItem("produto", JSON.stringify(objProdutoSelecionado));
+        } else {
+          let vetorProd = JSON.parse(localStorage.getItem("produto"));
+          let indice = vetorProd.findIndex((e) => {
+            return e.id == this.value;
+          });
+  
+          if (indice == -1) {
+            let objProdutoSelecionado = {
+              id: this.value,
+              qtd: 1,
+            };
+  
+            vetorProd.push(objProdutoSelecionado);
+  
+            localStorage.setItem("produto", JSON.stringify(vetorProd));
+          } else {
+            let objProdutoSelecionado = vetorProd[indice];
+            objProdutoSelecionado.qtd++;
+  
+            vetorProd[indice] = objProdutoSelecionado;
+  
+            localStorage.setItem("produto", JSON.stringify(vetorProd));
+          }
+        }
+      };
 
       card.appendChild(imagem);
       card.appendChild(titulo);
