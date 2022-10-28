@@ -89,7 +89,6 @@ function totalCarrinho() {
 
   for(let i = 0; i < carrinho.length; i++) {
     total = total + (carrinho[i].produto.valor * carrinho[i].quantidade)
-    console.log(total)
   }
   return total.toLocaleString("pt-br", {
     style: "currency",
@@ -147,9 +146,6 @@ window.onload = function () {
       quantidade: vetor[i].qtd,
     });
   }
-
-  console.log(vetor);
-  console.log(carrinho);
 
   listarProdutosCarrinho();
   totalCarrinho()
