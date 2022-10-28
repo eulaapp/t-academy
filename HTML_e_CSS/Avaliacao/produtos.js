@@ -19,7 +19,7 @@ produtos.push(
     },
     {
         'codigo': 3,
-        'nome': 'Puro Gel de Aloe Vera',
+        'nome': 'Gel Aloe Vera',
         'imagem': 'gel-aloe-vera.jpg',
         'estoque': 100,
         'segmento': 'Beleza',
@@ -27,7 +27,7 @@ produtos.push(
     },
     {
         'codigo': 4,
-        'nome': 'Base BB Cream Hidratante',
+        'nome': 'Base BB',
         'imagem': 'Base-BB-Cream-Hidratante.jpeg',
         'estoque': 30,
         'segmento': 'Beleza',
@@ -35,7 +35,7 @@ produtos.push(
     },
     {
         'codigo': 5,
-        'nome': 'Água Thermal Vegetal Gerânio',
+        'nome': 'Água Thermal',
         'imagem': 'agua-termal.jpg',
         'estoque': 35,
         'segmento': 'Beleza',
@@ -43,7 +43,7 @@ produtos.push(
     },
     {
         'codigo': 6,
-        'nome': 'Oil Control Oily Skin Gel Plus',
+        'nome': 'Oil Control',
         'imagem': 'gel-plus.webp',
         'estoque': 55,
         'segmento': 'Beleza',
@@ -59,7 +59,7 @@ produtos.push(
     },
     {
         'codigo': 8,
-        'nome': 'Loção Tônica Multifuncional',
+        'nome': 'Loção Tônica',
         'imagem': 'tonico.webp',
         'estoque': 25,
         'segmento': 'Beleza',
@@ -67,7 +67,7 @@ produtos.push(
     },
     {
         'codigo': 9,
-        'nome': 'Tônico Principia 7%',
+        'nome': 'Tônico Principia',
         'imagem': 'acido.jpg',
         'estoque': 12,
         'segmento': 'Beleza',
@@ -75,7 +75,7 @@ produtos.push(
     },
     {
         'codigo': 10,
-        'nome': 'Máscara Facial Mar Morto',
+        'nome': 'Máscara Facial',
         'imagem': 'mascara.webp',
         'estoque': 12,
         'segmento': 'Beleza',
@@ -83,7 +83,7 @@ produtos.push(
     },
     {
         'codigo': 11,
-        'nome': 'Panela Sauté Grand',
+        'nome': 'Panela Sauté',
         'imagem': 'panela.jpg',
         'estoque': 12,
         'segmento': 'Cozinha',
@@ -91,7 +91,7 @@ produtos.push(
     },
     {
         'codigo': 12,
-        'nome': 'Fritadeira Elétrica',
+        'nome': 'Fritadeira',
         'imagem': 'airfryer.webp',
         'estoque': 12,
         'segmento': 'Cozinha',
@@ -99,7 +99,7 @@ produtos.push(
     },
     {
         'codigo': 13,
-        'nome': 'Faqueiro Inox 30pc',
+        'nome': 'Faqueiro Inox',
         'imagem': 'faqueiro.webp',
         'estoque': 72,
         'segmento': 'Cozinha',
@@ -115,7 +115,7 @@ produtos.push(
     },
     {
         'codigo': 15,
-        'nome': 'Kit com 6 pratos fundos',
+        'nome': 'Kit com 6 pratos',
         'imagem': 'pratos.jpg',
         'estoque': 10,
         'segmento': 'Cozinha',
@@ -123,7 +123,7 @@ produtos.push(
     },
     {
         'codigo': 16,
-        'nome': 'Batedeira Planetária',
+        'nome': 'Batedeira',
         'imagem': 'batedeira.webp',
         'estoque': 23,
         'segmento': 'Cozinha',
@@ -131,7 +131,7 @@ produtos.push(
     },
     {
         'codigo': 17,
-        'nome': 'Liquidificador Mondial',
+        'nome': 'Liquidificador',
         'imagem': 'liquidificador.webp',
         'estoque': 33,
         'segmento': 'Cozinha',
@@ -139,7 +139,7 @@ produtos.push(
     },
     {
         'codigo': 18,
-        'nome': 'Conjunto 6 Copos 300ml Oca Nadir',
+        'nome': 'Conjunto copos',
         'imagem': 'copos.png',
         'estoque': 45,
         'segmento': 'Cozinha',
@@ -147,7 +147,7 @@ produtos.push(
     },
     {
         'codigo': 19,
-        'nome': 'Kit Panelas Ceramica',
+        'nome': 'Kit Panelas',
         'imagem': 'panela-vermelha.webp',
         'estoque': 10,
         'segmento': 'Cozinha',
@@ -171,7 +171,7 @@ produtos.push(
     },
     {
         'codigo': 22,
-        'nome': 'Vestido Midi Decote',
+        'nome': 'Vestido Midi',
         'imagem': 'vestido-2.webp',
         'estoque': 10,
         'segmento': 'Vestuário',
@@ -179,7 +179,7 @@ produtos.push(
     },
     {
         'codigo': 23,
-        'nome': 'Sandália Salto',
+        'nome': 'Sandália',
         'imagem': 'sandalia.webp',
         'estoque': 32,
         'segmento': 'Vestuário',
@@ -195,7 +195,7 @@ produtos.push(
     },
     {
         'codigo': 25,
-        'nome': 'Top Cropped de Decote',
+        'nome': 'Top Cropped',
         'imagem': 'cropped.png',
         'estoque': 25,
         'segmento': 'Vestuário',
@@ -211,7 +211,7 @@ produtos.push(
     },
     {
         'codigo': 27,
-        'nome': 'Camisa Estampada Acetinada',
+        'nome': 'Camisa Estampada',
         'imagem': 'camisa.jpg',
         'estoque': 10,
         'segmento': 'Vestuário',
