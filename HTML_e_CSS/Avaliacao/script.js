@@ -103,9 +103,11 @@ function pesquisarProdutos(produto) {
   listarProdutos.remove()
 
   listarProdutos = criarListaProdutos()
+  let produtoEncontrado = false
 
   for (let i = 0; i < produtos.length; i++) {
     if (produtos[i].nome.toLowerCase().includes(produto.toLowerCase())) {
+      produtoEncontrado = true
       let coluna = document.createElement("div")
       coluna.classList.add("col-3")
 
@@ -173,6 +175,10 @@ function pesquisarProdutos(produto) {
 
       listarProdutos.appendChild(coluna)
     }
+  }
+
+  if (!produtoEncontrado) {
+    alert("Produto não encontrado!")
   }
 }
 
