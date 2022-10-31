@@ -15,3 +15,22 @@ form textarea {
 	width: 500px;
 	margin: 10px auto;
 }
+
+.card p {
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.card h3 {
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+.card-comentario{
+	width: 500px;
+	margin: 10px auto;
+}
+
+.card-comentario h4{
+	margin-left: 5px;
+}
