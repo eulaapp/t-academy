@@ -34,15 +34,14 @@
 			
 			<% while(rs.next()) { 
 			
-				String texto = rs.getString(3);
-				texto.substring(0, 10);
+				String titulo = rs.getString(2);
+
 				
 			%>
 			<div class="col-12 coluna">
 				<div class="card">
-					<h3><% out.print(rs.getString(2)); %></h3>
-					<p><% out.print(texto + "..."); %></p>
-					<p><a href="detalhePublicacao.jsp?codigo=<% out.print(rs.getInt(1)); %>">Continue lendo...</a></p>
+					<h3><% out.print(titulo); %></h3>
+					<p><a href="detalhePublicacao.jsp?codigo=<% out.print(rs.getInt(1)); %>">Ver receita</a></p>
 				</div>
 			</div>
 			<% } %>
