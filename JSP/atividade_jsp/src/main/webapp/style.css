@@ -1,0 +1,17 @@
+form {
+	width: 500px;
+	margin:30px auto;
+}
+
+form input {
+	margin-top: 10px;
+}
+
+form textarea {
+	margin-top: 10px;
+}
+
+.card {
+	width: 500px;
+	margin: 10px auto;
+}
