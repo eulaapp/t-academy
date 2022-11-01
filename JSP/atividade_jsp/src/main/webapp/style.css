@@ -1,3 +1,7 @@
+body {
+	background-color: #F2F2F2;
+}
+
 form {
 	width: 500px;
 	margin:30px auto;
@@ -14,6 +18,13 @@ form textarea {
 .card {
 	width: 500px;
 	margin: 10px auto;
+	padding: 15px;
+	border-width: 1px;
+	border-color: black;
+}
+
+div .card:hover{
+	box-shadow: 0 4px 8px 0 #F1A0F2, 0 6px 20px 0 #F1A0F2;
 }
 
 .card p {
@@ -44,4 +55,15 @@ form textarea {
 	margin-bottom: 10px;
 	width: 150px;
 	margin-right: 10px;
+}
+
+.btn {
+	background-color: #F1A0F2;
+	border-color: #F1A0F2;
+}
+
+.btn:hover {
+	background-color: white;
+	border-color: #F1A0F2;
+	color: #F1A0F2;
 }
