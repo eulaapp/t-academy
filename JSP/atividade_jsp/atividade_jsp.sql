@@ -14,7 +14,4 @@ CREATE TABLE comentario(
     FOREIGN KEY (codigo_publicacao) REFERENCES publicacao(codigo)
 );
 
-SELECT * FROM publicacao WHERE codigo = 1;
-
-SELECT * FROM publicacao;
-SELECT COUNT(*) FROM comentario;
+SELECT titulo FROM publicacao;

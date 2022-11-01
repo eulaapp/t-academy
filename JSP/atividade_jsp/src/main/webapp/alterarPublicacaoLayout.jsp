@@ -37,9 +37,9 @@
 		}
 	%>
 	
-	<form action="alterarPublicacao.jsp">
-		<input type="text" placeholder="Título" name="titulo" class="form-control">
-		<textarea class="form-control" name="publicacao">Digite aqui para iniciar sua publicação...</textarea>
+	<form action="alterarPublicacaoConexaoBanco.jsp">
+		<input type="text" placeholder="Título" name="titulo" class="form-control" value="<% out.print(titulo); %>">
+		<textarea class="form-control" name="publicacao"><% out.print(conteudo); %></textarea>
 		<input type="hidden" name="codigo" value="<% out.print(codigo);%>">
 		<input type="submit" value="Publicar" class="btn btn-primary">
 	</form>
