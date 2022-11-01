@@ -17,4 +17,4 @@ CREATE TABLE comentario(
 SELECT * FROM publicacao WHERE codigo = 1;
 
 SELECT * FROM publicacao;
-SELECT * FROM comentario;
+SELECT COUNT(*) FROM comentario;

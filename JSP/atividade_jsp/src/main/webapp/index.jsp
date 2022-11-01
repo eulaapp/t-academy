@@ -35,13 +35,18 @@
 			<% while(rs.next()) { 
 			
 				String titulo = rs.getString(2);
+				String conteudo = rs.getString(3);
 
-				
 			%>
 			<div class="col-12 coluna">
 				<div class="card">
 					<h3><% out.print(titulo); %></h3>
+					<p><% out.print(conteudo); %>...</p>
 					<p><a href="detalhePublicacao.jsp?codigo=<% out.print(rs.getInt(1)); %>">Ver receita</a></p>
+					<div class="alinharBotoes">
+						<a href="editarPublicacao.jsp?codigo=<% out.print(rs.getInt(1)); %>" class="btn btn-primary">Alterar</a>
+						<a href="removerPublicacao.jsp?codigo=<% out.print(rs.getInt(1)); %>" class="btn btn-danger">Remover</a>
+					</div>
 				</div>
 			</div>
 			<% } %>

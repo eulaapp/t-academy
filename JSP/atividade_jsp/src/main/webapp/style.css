@@ -26,11 +26,22 @@ form textarea {
 	margin-left: 5px;
 }
 
-.card-comentario{
+.card-comentario {
 	width: 500px;
 	margin: 10px auto;
 }
 
-.card-comentario h4{
+.card-comentario h4 {
 	margin-left: 5px;
+}
+
+.alinharBotoes{
+	display: flex;
+	justify-content: center;
+}
+
+.card a {
+	margin-bottom: 10px;
+	width: 150px;
+	margin-right: 10px;
 }
