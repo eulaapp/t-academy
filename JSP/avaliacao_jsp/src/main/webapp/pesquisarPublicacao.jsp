@@ -42,13 +42,13 @@
 			while(rs.next()) { 
 				String codigo = rs.getString(1);
 				String titulo = rs.getString(2);
-				String conteudo = rs.getString(3);
+				String conteudo = rs.getString(3).substring(0, 20);
 		%>
 		<div class="row">
 			<div class="col-12 coluna">
 				<div class="card">
 					<h3><% out.print(titulo); %></h3>
-					<p><% out.print(conteudo); %></p>
+					<p><% out.print(conteudo); %>...</p>
 					<p><a href="detalhePublicacao.jsp?codigo=<% out.print(codigo); %>">Ver receita</a></p>
 					<div class="alinharBotoes">
 						<a href="alterarPublicacaoLayout.jsp?codigo=<% out.print(codigo); %>" class="btn btn-primary">Alterar</a>

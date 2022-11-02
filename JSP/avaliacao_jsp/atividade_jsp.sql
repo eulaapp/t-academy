@@ -14,5 +14,13 @@ CREATE TABLE comentario(
     FOREIGN KEY (codigo_publicacao) REFERENCES publicacao(codigo)
 );
 
-SELECT titulo FROM publicacao;
+CREATE TABLE usuario(
+	codigo INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255),
+    sobrenome VARCHAR(255),
+    email VARCHAR(255),
+    senha VARCHAR(255),
+    isAdmin boolean
+);
+
 

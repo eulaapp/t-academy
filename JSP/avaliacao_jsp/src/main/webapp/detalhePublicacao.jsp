@@ -49,10 +49,11 @@
 		
 	<form action="cadastrarComentario.jsp">
 		<label>Deixe um comentário</label>
-		<input type="text" placeholder="Nome" name="nome" class="form-control">
-		<input type="text" placeholder="Mensagem" name="mensagem" class="form-control">
+		<input type="text" placeholder="Nome" name="nome" class="form-control" disabled="">
+		<input type="text" placeholder="Mensagem" name="mensagem" class="form-control" disabled="">
 		<input type="hidden" name="codigo" value="<% out.print(codigo);%>">
-		<input type="submit" value="Comentar" class="btn btn-primary">
+		<input type="submit" value="Comentar" class="btn btn-primary" disabled=""><br><br>
+		<p> Para realizar comentários, é necessário ter uma conta, <a href="acessarConta.jsp">clique aqui</a> para fazer login.</p>
 	</form>
 	
 		<div class="container">
@@ -71,16 +72,24 @@
 			while(rs.next()) {
 				nome = rs.getString(2);
 				mensagem = rs.getString(3);
-			}
+			 
 		%>
 		<div class="row">
 			<div class="col-12 coluna-comentario">
 				<div class=" card card-comentario">
 					<h4><% out.print(nome); %></h4>
 					<p><% out.print(mensagem); %></p>
+					<!-- 
+						<div>
+							<a href="" class="btn btn-danger">Aprovar</a>
+							<a href="excluirComentario.jsp" class="btn btn-danger">Excluir</a>
+						</div>
+					 -->
+
 				</div>
 			</div>
 		</div>
+		<% } %>
 	</div>
 	
 </body>

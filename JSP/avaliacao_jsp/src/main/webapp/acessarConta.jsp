@@ -18,6 +18,7 @@
 					<h1>Login</h1>
 					<input type="email" placeholder="E-mail" name="email" class="form-control"> <br>
 					<input type="password" placeholder="Senha" name="senha" class="form-control"><br>
+					<p>Ainda não possui uma conta? <a href="cadastrarConta.jsp">Cadastra-se</a></p>
 					<input type="submit" value="Entrar" name="login" class="btn btn-primary">
 				</form>
 		    </div>

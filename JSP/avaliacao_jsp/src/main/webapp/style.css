@@ -57,13 +57,8 @@ div .card:hover{
 	margin-right: 10px;
 }
 
-.btn {
-	background-color: #F1A0F2;
-	border-color: #F1A0F2;
+.banirUsuario input{
+	width: 450px;
+	margin-right: 30px;
 }
 
-.btn:hover {
-	background-color: white;
-	border-color: #F1A0F2;
-	color: #F1A0F2;
-}
