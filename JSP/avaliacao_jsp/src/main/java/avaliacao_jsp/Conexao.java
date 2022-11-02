@@ -1,4 +1,4 @@
-package atividade_jsp;
+package avaliacao_jsp;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

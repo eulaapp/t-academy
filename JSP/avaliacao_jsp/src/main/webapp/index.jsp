@@ -1,6 +1,6 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
-<%@page import="atividade_jsp.Conexao"%>
+<%@page import="avaliacao_jsp.Conexao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
 			<% while(rs.next()) { 
 			
 				String titulo = rs.getString(2);
-				String conteudo = rs.getString(3).substring(0, 10);
+				String conteudo = rs.getString(3);
 
 			%>
 			<div class="col-12 coluna">

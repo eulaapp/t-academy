@@ -1,33 +1,33 @@
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="atividade_jsp.Conexao"%>
+<%@page import="avaliacao_jsp.Conexao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Alterar publicacao</title>
 </head>
 <body>
-		<%
-	
-		String nome = request.getParameter("nome");
-		String mensagem = request.getParameter("mensagem");
+	<%
+		
 		int codigo = Integer.parseInt(request.getParameter("codigo"));
+		String titulo = request.getParameter("titulo");
+		String conteudo = request.getParameter("publicacao");
 		
 		Conexao c = new Conexao();
 		
-		String sql = "INSERT INTO comentario(nome, mensagem, codigo_publicacao) VALUES (?,?,?)";
-
+		String sql = "UPDATE publicacao SET titulo = ?, conteudo = ? WHERE codigo = ? ";
+		
 		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
 		
-		pstmt.setString(1, nome);
-		pstmt.setString(2, mensagem);
+		pstmt.setString(1, titulo);
+		pstmt.setString(2, conteudo);
 		pstmt.setInt(3, codigo);
 		
 		pstmt.execute();
 		
-		response.sendRedirect("detalhePublicacao.jsp?codigo="+codigo);
+		response.sendRedirect("index.jsp");
 	
 	%>
 </body>
