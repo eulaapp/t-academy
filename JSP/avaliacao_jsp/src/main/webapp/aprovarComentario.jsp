@@ -15,18 +15,23 @@
 	
 	if(email != null) {
 		
-		int codigoComentario = Integer.parseInt(request.getParameter("codigoComentario"));
-		int codigo = Integer.parseInt(request.getParameter("codigo"));
-		Conexao c = new Conexao();
-				
-		String sql = "UPDATE comentario SET aprovado = true WHERE codigo =?";
-				
-		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
-		pstmt.setInt(1, codigoComentario);
-				
-		pstmt.execute();
+		try {
+			int codigoComentario = Integer.parseInt(request.getParameter("codigoComentario"));
+			int codigo = Integer.parseInt(request.getParameter("codigo"));
+			Conexao c = new Conexao();
+					
+			String sql = "UPDATE comentario SET aprovado = true WHERE codigo =?";
+					
+			PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
+			pstmt.setInt(1, codigoComentario);
+					
+			pstmt.execute();
+			
+			response.sendRedirect("detalhePublicacao.jsp?codigo="+codigo);
+		} catch(Exception e) {
+			response.sendRedirect("index.jsp");
+		}
 		
-		response.sendRedirect("detalhePublicacao.jsp?codigo="+codigo);
 	} else {
 		response.sendRedirect("acessarConta.jsp");
 	}
