@@ -76,8 +76,8 @@
 	
 	<% if(isAdmin) {%>
 		<form action="cadastrarPublicacao.jsp">
-			<input type="text" placeholder="Título" name="titulo" class="form-control">
-			<textarea class="form-control" name="publicacao">Digite aqui para iniciar sua publicação...</textarea>
+			<input type="text" placeholder="Título" name="titulo" class="form-control" required>
+			<textarea class="form-control" name="publicacao" required>Digite aqui para iniciar sua publicação...</textarea>
 			<input type="submit" value="Publicar" class="btn btn-primary">
 		</form>
 	<% } %>
@@ -97,7 +97,7 @@
 			<% while(rs.next()) { 
 				int codigoPublicacao = rs.getInt(1);
 				String titulo = rs.getString(2);
-				String conteudo = rs.getString(3).substring(0, 10);
+				String conteudo = rs.getString(3);
 			%>
 			<div class="col-12 coluna">
 				<div class="card">
