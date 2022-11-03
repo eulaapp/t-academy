@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="avaliacao_jsp.Conexao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -18,20 +19,25 @@
 			
 			Conexao c = new Conexao();
 			
-			String sql = "SELECT nome FROM usuario WHERE email = ? AND senha = ?";
+			String sql = "SELECT count(*) FROM usuario WHERE email = ? AND senha = ?";
 			
 			PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
 			
 			pstmt.setString(1, email);
 			pstmt.setString(2, senha);
-
 			
-			pstmt.execute();
-			session.setAttribute("email", email);
+			ResultSet rs = pstmt.executeQuery();
 			
-			response.sendRedirect("index.jsp");
-		} else {
-			response.sendError(400, "Erro");
+			while(rs.next()) {
+				if(rs.getInt(1) > 0) {
+					sql = "SELECT nome FROM usuario WHERE email = ? AND senha = ?";
+					session.setAttribute("email", email);
+					response.sendRedirect("index.jsp");
+				} else {
+					response.sendRedirect("acessarConta.jsp");
+				}
+			}
+			
 		}
 	
 	%>
