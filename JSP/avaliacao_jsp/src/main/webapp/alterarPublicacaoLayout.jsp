@@ -16,25 +16,27 @@
 <body>
 	
 		<%
+			String email=(String)session.getAttribute("email");
 		
-		int codigo = Integer.parseInt(request.getParameter("codigo"));
-		Conexao c = new Conexao();
-		
-		String sql = "SELECT * FROM publicacao WHERE codigo = ?";
-		
-		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
-		
-		pstmt.setInt(1, codigo);
-		
-		ResultSet rs = pstmt.executeQuery();
+			if(email != null) {
+			int codigo = Integer.parseInt(request.getParameter("codigo"));
+			Conexao c = new Conexao();
 			
-		String titulo = "";
-		String conteudo = "";
-		
-		while(rs.next()) {
-			titulo = rs.getString(2);
-			conteudo = rs.getString(3);
-		}
+			String sql = "SELECT * FROM publicacao WHERE codigo = ?";
+			
+			PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
+			
+			pstmt.setInt(1, codigo);
+			
+			ResultSet rs = pstmt.executeQuery();
+				
+			String titulo = "";
+			String conteudo = "";
+			
+			while(rs.next()) {
+				titulo = rs.getString(2);
+				conteudo = rs.getString(3);
+			}
 	%>
 	
 	<form action="alterarPublicacaoConexaoBanco.jsp">
@@ -43,6 +45,10 @@
 		<input type="hidden" name="codigo" value="<% out.print(codigo);%>">
 		<input type="submit" value="Publicar" class="btn btn-primary">
 	</form>
+	
+	<% } else {
+			response.sendRedirect("acessarConta.jsp");
+	  } %>
 		
 </body>
 </html>

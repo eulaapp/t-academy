@@ -18,10 +18,12 @@
 <body>
 
 	<%
-		Conexao c = new Conexao();
-	
 		String email=(String)session.getAttribute("email");
 	
+		if(email != null) {
+			
+		Conexao c = new Conexao();
+		
 		String sql = "SELECT * FROM usuario WHERE email = ?";
 		
 		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
@@ -56,5 +58,8 @@
 		      </form>
 		    </div>
 	  </div>
+	  <% } else {
+	  		response.sendRedirect("acessarConta.jsp");
+	  } %>
 </body>
 </html>

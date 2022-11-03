@@ -43,6 +43,8 @@
 						if(rs.getBoolean(6)) {
 							session.setAttribute("email", email);
 							response.sendRedirect("index.jsp");
+						} else {
+							
 						}
 					}
 
