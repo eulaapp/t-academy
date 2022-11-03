@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="avaliacao_jsp.Conexao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,24 +11,47 @@
 </head>
 <body>
 	<%
-		
-		int codigo = Integer.parseInt(request.getParameter("codigo"));
-		String titulo = request.getParameter("titulo");
-		String conteudo = request.getParameter("publicacao");
-		
+	
 		Conexao c = new Conexao();
 		
-		String sql = "UPDATE publicacao SET titulo = ?, conteudo = ? WHERE codigo = ? ";
+		String email=(String)session.getAttribute("email");
 		
-		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
+		String select = "SELECT * FROM usuario WHERE email = ?";
 		
-		pstmt.setString(1, titulo);
-		pstmt.setString(2, conteudo);
-		pstmt.setInt(3, codigo);
+		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(select);
 		
-		pstmt.execute();
+		pstmt.setString(1, email);
 		
-		response.sendRedirect("index.jsp");
+		ResultSet rs = pstmt.executeQuery();
+		
+		Boolean isAdmin = false;
+		int codigo = 0;
+		
+		while(rs.next()) {
+			isAdmin = rs.getBoolean(7);
+			codigo = rs.getInt(1);
+		}
+	
+		if(email != null) {
+			String titulo = request.getParameter("titulo");
+			String conteudo = request.getParameter("publicacao");
+			
+			c = new Conexao();
+			
+			String sql = "UPDATE publicacao SET titulo = ?, conteudo = ? WHERE codigo = ? ";
+			
+			pstmt = c.efetuarConexao().prepareStatement(sql);
+			
+			pstmt.setString(1, titulo);
+			pstmt.setString(2, conteudo);
+			pstmt.setInt(3, codigo);
+			
+			pstmt.execute();
+			
+			response.sendRedirect("index.jsp");
+		} else {
+			response.sendRedirect("acessarConta.jsp");
+		}
 	
 	%>
 </body>

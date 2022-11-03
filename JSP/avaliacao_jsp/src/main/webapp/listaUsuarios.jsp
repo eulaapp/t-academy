@@ -49,8 +49,6 @@
 				response.sendRedirect("index.jsp");
 			}
 			
-
-		
 		String usuario = "";
 		int codigo = 0;
 		Boolean isActive = true;
