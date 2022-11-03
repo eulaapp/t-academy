@@ -17,26 +17,44 @@
 	
 		<%
 			String email=(String)session.getAttribute("email");
-		
-			if(email != null) {
-			int codigo = Integer.parseInt(request.getParameter("codigo"));
 			Conexao c = new Conexao();
+			int codigo = Integer.parseInt(request.getParameter("codigo"));
 			
-			String sql = "SELECT * FROM publicacao WHERE codigo = ?";
-			
-			PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
-			
+			String select = "SELECT * FROM usuario WHERE email = ?";
+			PreparedStatement pstmt = c.efetuarConexao().prepareStatement(select);
+						
 			pstmt.setInt(1, codigo);
 			
 			ResultSet rs = pstmt.executeQuery();
-				
+			
+			Boolean isAdmin = false;
 			String titulo = "";
 			String conteudo = "";
 			
 			while(rs.next()) {
-				titulo = rs.getString(2);
-				conteudo = rs.getString(3);
+				isAdmin = rs.getBoolean(7);
 			}
+		
+			if(email != null) {
+				if(isAdmin) {
+					codigo = Integer.parseInt(request.getParameter("codigo"));
+					
+					String sql = "SELECT * FROM publicacao WHERE codigo = ?";
+					
+					pstmt = c.efetuarConexao().prepareStatement(sql);
+					
+					pstmt.setInt(1, codigo);
+					
+					rs = pstmt.executeQuery();
+										
+					while(rs.next()) {
+						titulo = rs.getString(2);
+						conteudo = rs.getString(3);
+					}
+				} else {
+					response.sendRedirect("index.jsp");
+				}
+
 	%>
 	
 	<form action="alterarPublicacaoConexaoBanco.jsp">
