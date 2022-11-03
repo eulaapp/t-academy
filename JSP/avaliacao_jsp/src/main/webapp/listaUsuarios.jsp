@@ -1,3 +1,4 @@
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="avaliacao_jsp.Conexao"%>
@@ -17,12 +18,17 @@
 	<%
 		
 		Conexao c = new Conexao();
+	
+		String email=(String)session.getAttribute("email");
+			
+		String sql = "SELECT * FROM usuario WHERE email <> ?";
+				
+		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
 		
-		String sql = "SELECT * FROM usuario";
+		pstmt.setString(1, email);
+		pstmt.execute();
 		
-		Statement stmt = c.efetuarConexao().createStatement();
-		
-		ResultSet rs = stmt.executeQuery(sql);
+		ResultSet rs = pstmt.executeQuery();
 		
 		String usuario = "";
 		int codigo = 0;

@@ -54,6 +54,7 @@
 	            <% if (isAdmin) { %>
 	            <li><a class="dropdown-item" href="listaUsuarios.jsp">Usuários</a></li>
 	            <% } %>
+	            <li><a class="dropdown-item" href="index.jsp">Home</a></li>
 	            <li><hr class="dropdown-divider"></li>
 	            <li><a class="dropdown-item" href="deslogarSistema.jsp">Sair</a></li>
 	            <% } else { %>

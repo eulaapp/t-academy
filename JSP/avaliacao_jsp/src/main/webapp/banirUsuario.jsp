@@ -12,6 +12,8 @@
 	<%
 	
 		int codigo = Integer.parseInt(request.getParameter("codigo"));
+	
+		String email=(String)session.getAttribute("email");
 		
 		Conexao c = new Conexao();
 		

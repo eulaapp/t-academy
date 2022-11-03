@@ -53,6 +53,7 @@
 	            <% if (isAdmin) { %>
 	            <li><a class="dropdown-item" href="listaUsuarios.jsp">Usuários</a></li>
 	            <% } %>
+	            <li><a class="dropdown-item" href="index.jsp">Home</a></li>
 	            <li><hr class="dropdown-divider"></li>
 	            <li><a class="dropdown-item" href="deslogarSistema.jsp">Sair</a></li>
 	            <% } else { %>
@@ -90,7 +91,7 @@
 			while(rs.next()) { 
 				String codigo = rs.getString(1);
 				String titulo = rs.getString(2);
-				String conteudo = rs.getString(3).substring(0, 20);
+				String conteudo = rs.getString(3).substring(0, 10);
 		%>
 		<div class="row">
 			<div class="col-12 coluna">
