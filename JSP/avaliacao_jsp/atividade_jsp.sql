@@ -23,4 +23,10 @@ CREATE TABLE usuario(
     isAdmin boolean
 );
 
+INSERT INTO usuario(nome, sobrenome, email, senha, isAdmin) VALUE ('Eula', 'Pereira', 'eula@gmail.com', '123abc', true);
+
+SELECT * FROM usuario;
+
+DELETE FROM usuario WHERE codigo = 4;
+
 

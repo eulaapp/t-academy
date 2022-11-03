@@ -48,12 +48,22 @@
 	</div>
 		
 	<form action="cadastrarComentario.jsp">
-		<label>Deixe um comentário</label>
-		<input type="text" placeholder="Nome" name="nome" class="form-control" disabled="">
+		<label>Deixe um comentário</label><br><br>
+		<!-- 
+			<input type="text" placeholder="Nome" name="nome" class="form-control" disabled="">
+		 -->
+		<%
+			String name=(String)session.getAttribute("email");  
+			if (session.getAttribute("email") != null) {
+		%>
+		<p><% out.print(name); %></p>
+		<% } %>
 		<input type="text" placeholder="Mensagem" name="mensagem" class="form-control" disabled="">
 		<input type="hidden" name="codigo" value="<% out.print(codigo);%>">
 		<input type="submit" value="Comentar" class="btn btn-primary" disabled=""><br><br>
-		<p> Para realizar comentários, é necessário ter uma conta, <a href="acessarConta.jsp">clique aqui</a> para fazer login.</p>
+		<% if (session.getAttribute("email") == null) { %>
+			<p> Para realizar comentários, é necessário ter uma conta, <a href="acessarConta.jsp">clique aqui</a> para fazer login.</p>
+		<% } %>
 	</form>
 	
 		<div class="container">
