@@ -20,15 +20,36 @@
 		Conexao c = new Conexao();
 	
 		String email=(String)session.getAttribute("email");
-			
-		String sql = "SELECT * FROM usuario WHERE email <> ?";
-				
-		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
+		
+		String select = "SELECT * FROM usuario WHERE email = ?";
+		
+		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(select);
 		
 		pstmt.setString(1, email);
-		pstmt.execute();
 		
 		ResultSet rs = pstmt.executeQuery();
+		
+		Boolean isAdmin = false;
+		
+		while(rs.next()) {
+			isAdmin = rs.getBoolean(7);
+		}
+		
+		if(email != null) {
+			if (isAdmin) {
+				String sql = "SELECT * FROM usuario WHERE email <> ?";
+				
+				pstmt = c.efetuarConexao().prepareStatement(sql);
+				
+				pstmt.setString(1, email);
+				pstmt.execute();
+				
+				rs = pstmt.executeQuery();
+			} else {
+				response.sendRedirect("index.jsp");
+			}
+			
+
 		
 		String usuario = "";
 		int codigo = 0;
@@ -62,6 +83,9 @@
 			</div>
 		</div>
 	</div>
+	<% } else { 
+		response.sendRedirect("acessarConta.jsp");
+	} %>
 
 </body>
 </html>

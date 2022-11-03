@@ -20,7 +20,7 @@
 
 	<%
 	
-		String email=(String)session.getAttribute("email");  
+		String email=(String)session.getAttribute("email");
 	
 		Conexao c = new Conexao();
 		
@@ -124,7 +124,7 @@
 			
 			while(rs.next()) {
 				nomeUsuario = rs.getString(2);
-				isAdmin = rs.getBoolean(6);
+				isAdmin = rs.getBoolean(7);
 				codigoUsuario = rs.getInt(1);
 			}
 			
@@ -132,7 +132,7 @@
 		%>
 			<p><% out.print(nomeUsuario); %></p>
 		<% } %>
-		<input type="text" placeholder="Mensagem" name="mensagem" class="form-control" <% if (session.getAttribute("email") == null) { %>disabled=""<% } %>>
+		<input type="text" placeholder="Mensagem" name="mensagem" class="form-control" <% if (session.getAttribute("email") == null) { %>disabled=""<% } %> required>
 		<input type="hidden" name="codigo" value="<% out.print(codigo);%>">
 		<input type="hidden" name="codigoUsuario" value="<% out.print(codigoUsuario);%>">
 		<input type="submit" value="Comentar" class="btn btn-primary" <% if (session.getAttribute("email") == null) { %>disabled=""<% } %>><br><br>
