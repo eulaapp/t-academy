@@ -32,7 +32,9 @@
 		
 		String usuario = "";
 		int codigo = 0;
-
+		Boolean isActive = true;
+		String mensagem = "";
+		
 	%>
 	<div class="container text-center">
 		<div class="row">
@@ -40,9 +42,19 @@
 				<h1>Usuários</h1>
 				<% 	while(rs.next()) {
 						usuario = rs.getString(2);
-						codigo = rs.getInt(1);%>
+						codigo = rs.getInt(1);
+						isActive = rs.getBoolean(6);
+						
+						if (!isActive) {
+							mensagem = "Banido";
+						} else {
+							mensagem = "Ativo";
+						}
+						
+						%>
 					<form class="d-flex banirUsuario" action="banirUsuario.jsp">
-						<input type="text" value=<% out.print(usuario); %> class="form-control">
+						<input type="text" value=<% out.print(usuario); %> class="form-control" readonly>
+						<input type="text" value=<% out.print(mensagem); %> class="form-control" readonly>
 						<input type="hidden" name="codigo" value=<% out.print(codigo); %>>
 						<input type="submit" value="Banir" class="btn btn-danger">
 					</form>
