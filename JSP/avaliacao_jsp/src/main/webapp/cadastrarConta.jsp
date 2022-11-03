@@ -13,6 +13,15 @@
 	<script src="script.js"></script>
 </head>
 <body>
+
+	<%
+		String email=(String)session.getAttribute("email");
+	
+		if(email != null) {
+			response.sendRedirect("index.jsp");
+		}
+	
+	%>
 	<div class="container text-center">
 		<div class="row">
 			<div class="col">
