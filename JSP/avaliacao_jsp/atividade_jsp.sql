@@ -30,6 +30,8 @@ CREATE TABLE usuario(
 INSERT INTO usuario(nome, sobrenome, email, senha, isActive, isAdmin) VALUE ('Eula', 'Pereira', 'eula@gmail.com', '123abc', true, true);
 
 SELECT * FROM usuario;
+DELETE FROM usuario WHERE codigo = 5;
+
 
 
 

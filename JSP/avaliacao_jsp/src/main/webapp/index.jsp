@@ -36,7 +36,7 @@
 		int codigoUsuario = 0;
 		
 		while(rs.next()) {
-			isAdmin = rs.getBoolean(6);
+			isAdmin = rs.getBoolean(7);
 		}
 	
 	%>

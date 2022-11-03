@@ -20,7 +20,7 @@
 			
 			Conexao c = new Conexao();
 			
-			String sql = "INSERT INTO usuario(nome, sobrenome, email, senha, isAdmin) VALUE (?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO usuario(nome, sobrenome, email, senha, isActive, isAdmin) VALUE (?, ?, ?, ?, ?, ? )";
 			
 			PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
 			
@@ -28,9 +28,9 @@
 			pstmt.setString(2, sobrenome);
 			pstmt.setString(3, email);
 			pstmt.setString(4, senha);
-			pstmt.setBoolean(5, false);
+			pstmt.setBoolean(5, true);
+			pstmt.setBoolean(6, false);
 
-			
 			pstmt.execute();
 			session.setAttribute("email", email);
 			

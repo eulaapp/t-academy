@@ -44,7 +44,7 @@
 							session.setAttribute("email", email);
 							response.sendRedirect("index.jsp");
 						} else {
-							
+							// adicionar alerta
 						}
 					}
 
