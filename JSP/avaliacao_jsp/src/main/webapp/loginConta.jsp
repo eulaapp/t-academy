@@ -27,12 +27,25 @@
 			pstmt.setString(2, senha);
 			
 			ResultSet rs = pstmt.executeQuery();
-			
+		
 			while(rs.next()) {
 				if(rs.getInt(1) > 0) {
-					sql = "SELECT nome FROM usuario WHERE email = ? AND senha = ?";
-					session.setAttribute("email", email);
-					response.sendRedirect("index.jsp");
+					sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
+					
+					pstmt = c.efetuarConexao().prepareStatement(sql);
+					
+					pstmt.setString(1, email);
+					pstmt.setString(2, senha);
+					
+					rs = pstmt.executeQuery();
+					
+					while(rs.next()) {
+						if(rs.getBoolean(6)) {
+							session.setAttribute("email", email);
+							response.sendRedirect("index.jsp");
+						}
+					}
+
 				} else {
 					response.sendRedirect("acessarConta.jsp");
 				}
