@@ -30,14 +30,5 @@ CREATE TABLE usuario(
 
 INSERT INTO usuario(nome, sobrenome, email, senha, isAdmin) VALUE ('Eula', 'Pereira', 'eula@gmail.com', '123abc', true);
 
-SELECT * FROM usuario;
-
-DELETE FROM usuario WHERE codigo = 6;
-
-DROP TABLE comentario;
-
-SELECT nome FROM usuario WHERE email = 'denilson@gmail.com' AND senha = '123456';
-
-SELECT cmt.*, us.* FROM comentario cmt INNER JOIN usuario us ON cmt.codigo_usuario = us.codigo;
 
 

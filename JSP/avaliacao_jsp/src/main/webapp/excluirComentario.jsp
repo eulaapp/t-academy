@@ -11,22 +11,19 @@
 <body>
 	<%
 	
+		int codigoComentario = Integer.parseInt(request.getParameter("codigoComentario"));
 		int codigo = Integer.parseInt(request.getParameter("codigo"));
 		
 		Conexao c = new Conexao();
 		
-		String deleteComentario = "DELETE FROM comentario WHERE codigo_usuario = ?";
-		String sql = "DELETE FROM usuario WHERE codigo = ?";
+		String deleteCometario = "DELETE FROM comentario WHERE codigo = ?";
 		
-		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(deleteComentario);
-		pstmt.setInt(1, codigo);
+		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(deleteCometario);
+		pstmt.setInt(1, codigoComentario);
+		
 		pstmt.execute();
 		
-		pstmt = c.efetuarConexao().prepareStatement(sql);
-		pstmt.setInt(1, codigo);
-		pstmt.execute();
-		
-		response.sendRedirect("listaUsuarios.jsp");
+		response.sendRedirect("detalhePublicacao.jsp?codigo="+codigo);
 	%>
 </body>
 </html>

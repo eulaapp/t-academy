@@ -1,3 +1,6 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="avaliacao_jsp.Conexao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,18 +14,36 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<%
+		
+		Conexao c = new Conexao();
+		
+		String sql = "SELECT * FROM usuario";
+		
+		Statement stmt = c.efetuarConexao().createStatement();
+		
+		ResultSet rs = stmt.executeQuery(sql);
+		
+		String usuario = "";
+		int codigo = 0;
+
+	%>
 	<div class="container text-center">
 		<div class="row">
 			<div class="col">
 				<h1>Usuários</h1>
-				<form class="d-flex banirUsuario" action="banirUsuario.jsp">
-					<input type="text" value="Eula Paula Pereira" class="form-control">
-					<input type="submit" value="Banir" class="btn btn-danger">
-				</form>
+				<% 	while(rs.next()) {
+						usuario = rs.getString(2);
+						codigo = rs.getInt(1);%>
+					<form class="d-flex banirUsuario" action="banirUsuario.jsp">
+						<input type="text" value=<% out.print(usuario); %> class="form-control">
+						<input type="hidden" name="codigo" value=<% out.print(codigo); %>>
+						<input type="submit" value="Banir" class="btn btn-danger">
+					</form>
+				<% } %>
 			</div>
 		</div>
-
-
 	</div>
+
 </body>
 </html>

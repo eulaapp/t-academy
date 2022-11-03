@@ -12,22 +12,79 @@
 	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+	<%
+	
+		String email=(String)session.getAttribute("email");  
+	
+		Conexao c = new Conexao();
+		
+		String selectNomeUsuario = "SELECT * FROM usuario WHERE email = ?";
+		
+		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(selectNomeUsuario);
+		pstmt.setString(1, email);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		Boolean isAdmin = false;
+		int codigoUsuario = 0;
+		
+		while(rs.next()) {
+			isAdmin = rs.getBoolean(6);
+		}
+	
+	%>
+	<nav class="navbar navbar-expand-lg bg-light">
+	  <div class="container-fluid">
+	    <div class="collapse navbar-collapse container-fluid" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	        <li class="nav-item dropdown">
+	          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	            Menu
+	          </a>
+	          <ul class="dropdown-menu">
+	          	
+	          	<% if( email != null) { %>
+	            <li><a class="dropdown-item" href="alterarDados.jsp">Alterar dados</a></li>
+	            <% if (isAdmin) { %>
+	            <li><a class="dropdown-item" href="listaUsuarios.jsp">Usuários</a></li>
+	            <% } %>
+	            <li><hr class="dropdown-divider"></li>
+	            <li><a class="dropdown-item" href="deslogarSistema.jsp">Sair</a></li>
+	            <% } else { %>
+	            <li><a class="dropdown-item" href="acessarConta.jsp">Login</a></li>
+	            <% } %>
+	          </ul>
+	        </li>
+	      </ul>
+
+			<div class="container-fluid">
+				<form class="d-flex" role="search" action="pesquisarPublicacao.jsp">
+				    <input class="form-control me-2" type="search" name="pesquisa" placeholder="Pesquisar publicação">
+				    <input type="submit" value="Pesquisar" class="btn btn-success">
+		      	</form>
+			</div>
+	    </div>
+	  </div>
+	</nav>
 	<div class="container">
 	
 		<%
 			int codigo = Integer.parseInt(request.getParameter("codigo"));
 		
-			Conexao c = new Conexao();
+			c = new Conexao();
 			
 			String sql = "SELECT * FROM publicacao WHERE codigo = ?";
 			
-			PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
+			pstmt = c.efetuarConexao().prepareStatement(sql);
 			pstmt.setInt(1, codigo);
 			
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			
 			String titulo = "";
 			String conteudo = "";
@@ -51,9 +108,9 @@
 		<label>Deixe um comentário</label><br><br>
 
 		<%
-			String email=(String)session.getAttribute("email");  
+			email=(String)session.getAttribute("email");  
 		
-			String selectNomeUsuario = "SELECT * FROM usuario WHERE email = ?";
+			selectNomeUsuario = "SELECT * FROM usuario WHERE email = ?";
 			
 			pstmt = c.efetuarConexao().prepareStatement(selectNomeUsuario);
 			pstmt.setString(1, email);
@@ -61,8 +118,8 @@
 			rs = pstmt.executeQuery();
 			
 			String nomeUsuario = "";
-			Boolean isAdmin = false;
-			int codigoUsuario = 0;
+			isAdmin = false;
+			codigoUsuario = 0;
 			
 			while(rs.next()) {
 				nomeUsuario = rs.getString(2);
@@ -98,8 +155,10 @@
 			Boolean comentarioAprovado = false;
 			String nomeUsuarioComentario = "";
 			int codigoUsuarioComentario = 0;
+			int codigoComentario = 0;
 			
 			while(rs.next()) {
+				codigoComentario = rs.getInt(1);
 				nome = rs.getString(2);
 				mensagem = rs.getString(3);
 				comentarioAprovado = rs.getBoolean(4);
@@ -116,8 +175,12 @@
 					<p><% out.print(mensagem); %></p>
 					<% if (isAdmin) { %>
 						<div>
-							<a href="" class="btn btn-success">Aprovar</a>
-							<a href="excluirComentario.jsp" class="btn btn-danger">Excluir</a>
+						<% if(!comentarioAprovado) {%>
+							<a href="aprovarComentario.jsp?codigoComentario=<% out.print(codigoComentario);%>&codigo=<% out.print(codigo);%>" class="btn btn-success">Aprovar</a>
+						<% } else { %>
+							<a href="aprovarComentario.jsp?codigoComentario=<% out.print(codigoComentario);%>&codigo=<% out.print(codigo);%>" class="btn btn-success">Aprovado</a>
+						<% } %>
+							<a href="excluirComentario.jsp?codigoComentario=<% out.print(codigoComentario);%>&codigo=<% out.print(codigo);%>" class="btn btn-danger">Excluir</a>
 						</div>
 					<% } %>
 				</div>
@@ -125,7 +188,7 @@
 		</div>
 		<% 
 				} 
-				
+
 			} 
 		%>
 	</div>

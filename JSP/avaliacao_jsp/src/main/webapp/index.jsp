@@ -1,3 +1,4 @@
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="avaliacao_jsp.Conexao"%>
@@ -17,6 +18,28 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+	<%
+	
+		String email=(String)session.getAttribute("email");  
+	
+		Conexao c = new Conexao();
+		
+		String selectNomeUsuario = "SELECT * FROM usuario WHERE email = ?";
+		
+		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(selectNomeUsuario);
+		pstmt.setString(1, email);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		Boolean isAdmin = false;
+		int codigoUsuario = 0;
+		
+		while(rs.next()) {
+			isAdmin = rs.getBoolean(6);
+		}
+	
+	%>
 	<nav class="navbar navbar-expand-lg bg-light">
 	  <div class="container-fluid">
 	    <div class="collapse navbar-collapse container-fluid" id="navbarSupportedContent">
@@ -26,14 +49,22 @@
 	            Menu
 	          </a>
 	          <ul class="dropdown-menu">
+	          	
+	          	<% if( email != null) { %>
 	            <li><a class="dropdown-item" href="alterarDados.jsp">Alterar dados</a></li>
+	            <% if (isAdmin) { %>
 	            <li><a class="dropdown-item" href="listaUsuarios.jsp">Usuários</a></li>
+	            <% } %>
 	            <li><hr class="dropdown-divider"></li>
 	            <li><a class="dropdown-item" href="deslogarSistema.jsp">Sair</a></li>
+	            <% } else { %>
+	            <li><a class="dropdown-item" href="acessarConta.jsp">Login</a></li>
+	            <% } %>
 	          </ul>
 	        </li>
 	      </ul>
-			<div>
+
+			<div class="container-fluid">
 				<form class="d-flex" role="search" action="pesquisarPublicacao.jsp">
 				    <input class="form-control me-2" type="search" name="pesquisa" placeholder="Pesquisar publicação">
 				    <input type="submit" value="Pesquisar" class="btn btn-success">
@@ -42,50 +73,43 @@
 	    </div>
 	  </div>
 	</nav>
-
-	<!-- 
 	
+	<% if(isAdmin) {%>
 		<form action="cadastrarPublicacao.jsp">
 			<input type="text" placeholder="Título" name="titulo" class="form-control">
 			<textarea class="form-control" name="publicacao">Digite aqui para iniciar sua publicação...</textarea>
 			<input type="submit" value="Publicar" class="btn btn-primary">
 		</form>
-		
-	 -->
-
+	<% } %>
+	
 	<div class="container">
 		<%
-			Conexao c = new Conexao();
-			
+
 			String sql = "SELECT * FROM publicacao ORDER BY codigo DESC LIMIT 10";
 
 			Statement stmt = c.efetuarConexao().createStatement();
 			
-			ResultSet rs = stmt.executeQuery(sql);
+			rs = stmt.executeQuery(sql);
 	
 		%>
 		<div class="row">
 			
 			<% while(rs.next()) { 
-			
+				int codigoPublicacao = rs.getInt(1);
 				String titulo = rs.getString(2);
 				String conteudo = rs.getString(3).substring(0, 20);
-
 			%>
 			<div class="col-12 coluna">
 				<div class="card">
 					<h3><% out.print(titulo); %></h3>
 					<p><% out.print(conteudo); %>...</p>
-					<p><a href="detalhePublicacao.jsp?codigo=<% out.print(rs.getInt(1)); %>">Ver mais</a></p>
-					
-					<!-- 
+					<p><a href="detalhePublicacao.jsp?codigo=<% out.print(codigoPublicacao); %>">Ver mais</a></p>
+					<% if(isAdmin) { %>
 						<div class="alinharBotoes">
-							<a href="alterarPublicacaoLayout.jsp?codigo=<% out.print(rs.getInt(1)); %>" class="btn btn-primary">Alterar</a>
-							<a href="removerPublicacao.jsp?codigo=<% out.print(rs.getInt(1)); %>" class="btn btn-danger">Remover</a>
+							<a href="alterarPublicacaoLayout.jsp?codigo=<% out.print(codigoPublicacao); %>" class="btn btn-primary">Alterar</a>
+							<a href="removerPublicacao.jsp?codigo=<% out.print(codigoPublicacao); %>" class="btn btn-danger">Remover</a>
 						</div>
-						
-					 -->
-
+					<% } %>
 				</div>
 			</div>
 			<% } %>
