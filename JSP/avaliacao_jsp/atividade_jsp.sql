@@ -10,9 +10,14 @@ CREATE TABLE comentario(
 	codigo INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(45),
     mensagem VARCHAR(250),
+    aprovado BOOLEAN,
     codigo_publicacao INT,
-    FOREIGN KEY (codigo_publicacao) REFERENCES publicacao(codigo)
+    codigo_usuario INT,
+    FOREIGN KEY (codigo_publicacao) REFERENCES publicacao(codigo),
+    FOREIGN KEY (codigo_usuario) REFERENCES usuario(codigo)
 );
+
+DROP TABLE comentario;
 
 CREATE TABLE usuario(
 	codigo INT AUTO_INCREMENT PRIMARY KEY,
@@ -27,6 +32,12 @@ INSERT INTO usuario(nome, sobrenome, email, senha, isAdmin) VALUE ('Eula', 'Pere
 
 SELECT * FROM usuario;
 
-DELETE FROM usuario WHERE codigo = 4;
+DELETE FROM usuario WHERE codigo = 6;
+
+DROP TABLE comentario;
+
+SELECT nome FROM usuario WHERE email = 'denilson@gmail.com' AND senha = '123456';
+
+SELECT cmt.*, us.* FROM comentario cmt INNER JOIN usuario us ON cmt.codigo_usuario = us.codigo;
 
 

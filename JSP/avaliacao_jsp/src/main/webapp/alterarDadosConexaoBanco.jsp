@@ -11,28 +11,32 @@
 <body>
 	<%
 	
+		String email=(String)session.getAttribute("email");
+	
 		String nome = request.getParameter("nome");
 		String sobrenome = request.getParameter("sobrenome");
-		String email = request.getParameter("email-cadastro");
+		String emailNovo = request.getParameter("email-cadastro");
 		String senha = request.getParameter("senha-cadastro");
-
+		
 		if (nome != "" && sobrenome != "" && email != "" && senha != "") {
 			
 			Conexao c = new Conexao();
 			
-			String sql = "INSERT INTO usuario(nome, sobrenome, email, senha, isAdmin) VALUE (?, ?, ?, ?, ?)";
+			String sql = "UPDATE usuario SET nome = ?, sobrenome =?, email =?, senha =? WHERE email = ?";
 			
 			PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
 			
 			pstmt.setString(1, nome);
 			pstmt.setString(2, sobrenome);
-			pstmt.setString(3, email);
+			pstmt.setString(3, emailNovo);
 			pstmt.setString(4, senha);
-			pstmt.setBoolean(5, false);
+			pstmt.setString(5, email);
 			
 			pstmt.execute();
-			session.setAttribute("email", email);
 			
+
+			session.setAttribute("email", emailNovo);
+
 			response.sendRedirect("index.jsp");
 		} else {
 			response.sendError(400, "Erro");

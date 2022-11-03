@@ -29,7 +29,7 @@
 	            <li><a class="dropdown-item" href="alterarDados.jsp">Alterar dados</a></li>
 	            <li><a class="dropdown-item" href="listaUsuarios.jsp">Usuários</a></li>
 	            <li><hr class="dropdown-divider"></li>
-	            <li><a class="dropdown-item" href="#">Sair</a></li>
+	            <li><a class="dropdown-item" href="deslogarSistema.jsp">Sair</a></li>
 	          </ul>
 	        </li>
 	      </ul>

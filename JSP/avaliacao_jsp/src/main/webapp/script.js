@@ -5,29 +5,30 @@ function validarCadastroUsuario() {
 	let email = document.getElementsByName("email-cadastro")[0].value;
 	let senha = document.getElementsByName("senha-cadastro")[0].value;
 
-	if (nome == "") {
+	if (nome.trim() == "") {
 		alert("O nome nao pode estar vazio!");
 		return false;
-	} else if (sobrenome == "") {
+	} else if (sobrenome.trim() == "") {
 		alert("O sobrenome nao pode estar vazio!");
 		return false;
-	} else if (email == "") {
+	} else if (email.trim() == "") {
 		alert("O e-mail nao pode estar vazio!");
 		return false;
-	} else if (senha == "") {
+	} else if (senha.trim() == "") {
 		alert("A senha nao pode estar vazio!");
 		return false;
 	}
 }
 
 function validarLogin() {
-	let email = document.getElementsByName("nome")[0].value;
+	debugger;
+	let email = document.getElementsByName("email")[0].value;
 	let senha = document.getElementsByName("senha")[0].value;
 	
-	if (email == "") {
+	if (email.trim() == "") {
 		alert("O e-mail nao pode estar vazio!");
 		return false;
-	} else if (senha == "") {
+	} else if (senha.trim() == "") {
 		alert("A senha nao pode estar vazio!");
 		return false;
 	}

@@ -14,16 +14,19 @@
 		String nome = request.getParameter("nome");
 		String mensagem = request.getParameter("mensagem");
 		int codigo = Integer.parseInt(request.getParameter("codigo"));
+		int codigoUsuario = Integer.parseInt(request.getParameter("codigoUsuario"));
 		
 		Conexao c = new Conexao();
 		
-		String sql = "INSERT INTO comentario(nome, mensagem, codigo_publicacao) VALUES (?,?,?)";
+		String sql = "INSERT INTO comentario(nome, mensagem, aprovado, codigo_publicacao, codigo_usuario) VALUES (?,?,?,?,?)";
 
 		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
 		
 		pstmt.setString(1, nome);
 		pstmt.setString(2, mensagem);
-		pstmt.setInt(3, codigo);
+		pstmt.setBoolean(3, false);
+		pstmt.setInt(4, codigo);
+		pstmt.setInt(5, codigoUsuario);
 		
 		pstmt.execute();
 		

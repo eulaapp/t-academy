@@ -49,18 +49,35 @@
 		
 	<form action="cadastrarComentario.jsp">
 		<label>Deixe um comentário</label><br><br>
-		<!-- 
-			<input type="text" placeholder="Nome" name="nome" class="form-control" disabled="">
-		 -->
+
 		<%
-			String name=(String)session.getAttribute("email");  
+			String email=(String)session.getAttribute("email");  
+		
+			String selectNomeUsuario = "SELECT * FROM usuario WHERE email = ?";
+			
+			pstmt = c.efetuarConexao().prepareStatement(selectNomeUsuario);
+			pstmt.setString(1, email);
+			
+			rs = pstmt.executeQuery();
+			
+			String nomeUsuario = "";
+			Boolean isAdmin = false;
+			int codigoUsuario = 0;
+			
+			while(rs.next()) {
+				nomeUsuario = rs.getString(2);
+				isAdmin = rs.getBoolean(6);
+				codigoUsuario = rs.getInt(1);
+			}
+			
 			if (session.getAttribute("email") != null) {
 		%>
-		<p><% out.print(name); %></p>
+			<p><% out.print(nomeUsuario); %></p>
 		<% } %>
-		<input type="text" placeholder="Mensagem" name="mensagem" class="form-control" disabled="">
+		<input type="text" placeholder="Mensagem" name="mensagem" class="form-control" <% if (session.getAttribute("email") == null) { %>disabled=""<% } %>>
 		<input type="hidden" name="codigo" value="<% out.print(codigo);%>">
-		<input type="submit" value="Comentar" class="btn btn-primary" disabled=""><br><br>
+		<input type="hidden" name="codigoUsuario" value="<% out.print(codigoUsuario);%>">
+		<input type="submit" value="Comentar" class="btn btn-primary" <% if (session.getAttribute("email") == null) { %>disabled=""<% } %>><br><br>
 		<% if (session.getAttribute("email") == null) { %>
 			<p> Para realizar comentários, é necessário ter uma conta, <a href="acessarConta.jsp">clique aqui</a> para fazer login.</p>
 		<% } %>
@@ -68,7 +85,7 @@
 	
 		<div class="container">
 		<%
-			sql = "SELECT * FROM comentario WHERE codigo_publicacao = ?";
+			sql = "SELECT cmt.*, us.* FROM comentario cmt INNER JOIN usuario us ON cmt.codigo_usuario = us.codigo WHERE cmt.codigo_publicacao = ?";
 			
 			pstmt = c.efetuarConexao().prepareStatement(sql);
 			pstmt.setInt(1, codigo);
@@ -78,28 +95,39 @@
 			
 			String nome = "";
 			String mensagem = "";
+			Boolean comentarioAprovado = false;
+			String nomeUsuarioComentario = "";
+			int codigoUsuarioComentario = 0;
 			
 			while(rs.next()) {
 				nome = rs.getString(2);
 				mensagem = rs.getString(3);
+				comentarioAprovado = rs.getBoolean(4);
+				nomeUsuarioComentario = rs.getString(8);
+				codigoUsuarioComentario = rs.getInt(6);
+				
+				if (comentarioAprovado || isAdmin || codigoUsuarioComentario == codigoUsuario) {
 			 
 		%>
 		<div class="row">
 			<div class="col-12 coluna-comentario">
 				<div class=" card card-comentario">
-					<h4><% out.print(nome); %></h4>
+					<h4><% out.print(nomeUsuarioComentario); %></h4>
 					<p><% out.print(mensagem); %></p>
-					<!-- 
+					<% if (isAdmin) { %>
 						<div>
-							<a href="" class="btn btn-danger">Aprovar</a>
+							<a href="" class="btn btn-success">Aprovar</a>
 							<a href="excluirComentario.jsp" class="btn btn-danger">Excluir</a>
 						</div>
-					 -->
-
+					<% } %>
 				</div>
 			</div>
 		</div>
-		<% } %>
+		<% 
+				} 
+				
+			} 
+		%>
 	</div>
 	
 </body>
