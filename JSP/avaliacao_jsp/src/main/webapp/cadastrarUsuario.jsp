@@ -16,7 +16,7 @@
 		String email = request.getParameter("email-cadastro");
 		String senha = request.getParameter("senha-cadastro");
 
-		if (nome != "" && sobrenome != "" && email != "" && senha != "") {
+		if (nome != "" && sobrenome != "" && email != "" && senha != "" && nome != null && sobrenome != null && email != null && senha != null) {
 			
 			Conexao c = new Conexao();
 			
@@ -36,7 +36,7 @@
 			
 			response.sendRedirect("index.jsp");
 		} else {
-			response.sendError(400, "Erro");
+			response.sendRedirect("index.jsp");
 		}
 	
 	%>
