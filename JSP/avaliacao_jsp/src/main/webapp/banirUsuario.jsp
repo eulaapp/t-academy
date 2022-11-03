@@ -11,17 +11,28 @@
 <body>
 	<%
 	
-		int codigo = Integer.parseInt(request.getParameter("codigo"));
-			
-		Conexao c = new Conexao();
-
-		String sql = "UPDATE usuario SET isActive = 0 WHERE codigo = ?";
-		
-		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
-		pstmt.setInt(1, codigo);
-		pstmt.execute();
+		String email=(String)session.getAttribute("email");
 	
-		response.sendRedirect("listaUsuarios.jsp");
+		if(email != null) {
+			try {
+				int codigo = Integer.parseInt(request.getParameter("codigo"));
+				
+				Conexao c = new Conexao();
+
+				String sql = "UPDATE usuario SET isActive = 0 WHERE codigo = ?";
+				
+				PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
+				pstmt.setInt(1, codigo);
+				pstmt.execute();
+			
+				response.sendRedirect("listaUsuarios.jsp");
+			} catch(Exception e) {
+				response.sendRedirect("index.jsp");
+			}
+
+		} else {
+			response.sendRedirect("acessarConta.jsp");
+		}
 	%>
 </body>
 </html>
