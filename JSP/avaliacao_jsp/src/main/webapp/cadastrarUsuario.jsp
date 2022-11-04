@@ -21,7 +21,7 @@
 		
 		Conexao c = new Conexao();
 		
-		String sql = "SELECT * FROM usuario WHERE email = ?";
+		String sql = "SELECT count(*) FROM usuario WHERE email = ?";
 		
 		PreparedStatement pstmt = c.efetuarConexao().prepareStatement(sql);
 		
@@ -29,40 +29,31 @@
 		
 		ResultSet rs = pstmt.executeQuery();
 		
-
-		String emailCadastrado = "";
 		
 		while(rs.next()) {
-			emailCadastrado = rs.getString(4);
-
-			
-			if(emailCadastrado.equals(email)) {
+			if(rs.getInt(1) > 0) { 
 				response.sendRedirect("usuarioExiste.jsp");
 			} else {
-				if (nome != "" && sobrenome != "" && email != "" && senha != "" && nome != null && sobrenome != null && email != null && senha != null) {
-					
-					c = new Conexao();
-					
-					sql = "INSERT INTO usuario(nome, sobrenome, email, senha, isActive, isAdmin) VALUE (?, ?, ?, ?, ?, ? )";
-					
-					pstmt = c.efetuarConexao().prepareStatement(sql);
-					
-					pstmt.setString(1, nome);
-					pstmt.setString(2, sobrenome);
-					pstmt.setString(3, email);
-					pstmt.setString(4, senha);
-					pstmt.setBoolean(5, true);
-					pstmt.setBoolean(6, false);
+				c = new Conexao();
+				
+				sql = "INSERT INTO usuario(nome, sobrenome, email, senha, isActive, isAdmin) VALUE (?, ?, ?, ?, ?, ? )";
+				
+				pstmt = c.efetuarConexao().prepareStatement(sql);
+				
+				pstmt.setString(1, nome);
+				pstmt.setString(2, sobrenome);
+				pstmt.setString(3, email);
+				pstmt.setString(4, senha);
+				pstmt.setBoolean(5, true);
+				pstmt.setBoolean(6, false);
 
-					pstmt.execute();
-					session.setAttribute("email", email);
-					
-					response.sendRedirect("index.jsp");
-				} else {
-					response.sendRedirect("index.jsp");
-				}
-			}
-		}
+				pstmt.execute();
+				session.setAttribute("email", email);
+				
+				response.sendRedirect("index.jsp");
+			}		}
+
+		
 	%>
 </body>
 </html>

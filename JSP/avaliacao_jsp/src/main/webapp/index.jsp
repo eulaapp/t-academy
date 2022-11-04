@@ -76,8 +76,8 @@
 	
 	<% if(isAdmin) {%>
 		<form action="cadastrarPublicacao.jsp">
-			<input type="text" placeholder="Título" name="titulo" class="form-control" required>
-			<textarea class="form-control" name="publicacao" required>Digite aqui para iniciar sua publicação...</textarea>
+			<input minlength=5 maxlenght=45 type="text" placeholder="Título" name="titulo" class="form-control" required>
+			<textarea minlength=5 maxlenght=4096 class="form-control" name="publicacao" required>Digite aqui para iniciar sua publicação...</textarea>
 			<input type="submit" value="Publicar" class="btn btn-primary">
 		</form>
 	<% } %>
