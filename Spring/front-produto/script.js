@@ -28,5 +28,11 @@ function listarProdutos() {
         let colunaNome = tabela.insertCell(1);
         let colunaValor = tabela.insertCell(2);
         let colunaSelecionar = tabela.insertCell(3);
+
+        // dados das colunas
+        colunaCodigo.innerText = vetor[i].codigo;
+        colunaNome.innerText = vetor[i].nome;
+        colunaValor.innerText = vetor[i].valor;
+        colunaSelecionar.innerHTML = "<button>Selecione</button>"
     }
 }
