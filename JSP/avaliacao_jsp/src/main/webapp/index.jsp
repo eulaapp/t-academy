@@ -97,7 +97,7 @@
 			<% while(rs.next()) { 
 				int codigoPublicacao = rs.getInt(1);
 				String titulo = rs.getString(2);
-				String conteudo = rs.getString(3);
+				String conteudo = rs.getString(3).substring(0,5);
 			%>
 			<div class="col-12 coluna">
 				<div class="card">

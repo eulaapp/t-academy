@@ -1,5 +1,6 @@
 CREATE DATABASE atividade;
 USE atividade;
+
 CREATE TABLE publicacao(
 	codigo INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(45),
@@ -28,9 +29,6 @@ CREATE TABLE usuario(
 );
 
 INSERT INTO usuario(nome, sobrenome, email, senha, isActive, isAdmin) VALUE ('Eula', 'Pereira', 'eula@gmail.com', '123abc', true, true);
-
-SELECT * FROM usuario;
-DELETE FROM usuario WHERE codigo = 6;
 
 
 

@@ -27,10 +27,10 @@
 			<div class="col">
 			 <form action="cadastrarUsuario.jsp" method="POST" onsubmit="return validarCadastroUsuario()">
 		      	<h1>Cadastre-se</h1>
-		      	<input type="text" placeholder="Nome" name="nome" class="form-control"><br>
-		      	<input type="text" placeholder="Sobrenome" name="sobrenome" class="form-control"><br>
-		      	<input type="email" placeholder="E-mail" name="email-cadastro" class="form-control"><br>
-		      	<input type="password" placeholder="Senha" name="senha-cadastro" class="form-control"><br>
+		      	<input type="text" placeholder="Nome" name="nome" class="form-control" required><br>
+		      	<input type="text" placeholder="Sobrenome" name="sobrenome" class="form-control" required><br>
+		      	<input type="email" placeholder="E-mail" name="email-cadastro" class="form-control" required><br>
+		      	<input type="password" placeholder="Senha" name="senha-cadastro" class="form-control" required><br>
 		      	<input type="submit" value="Criar conta" name="cadastro" class="btn btn-primary">
 		      </form>
 			</div>
