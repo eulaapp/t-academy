@@ -12,7 +12,7 @@ function obterProdutos() {
     fetch("http://localhost:8080")
     .then(retorno => retorno.json())
     .then(produtos => vetor = produtos)
-    .then(produtos => listarProdutos())
+    .then(() => listarProdutos())
 }
 
 // listar os produtos do vetor na tabela 
@@ -37,6 +37,6 @@ function listarProdutos() {
         colunaCodigo.innerText = vetor[i].codigo;
         colunaNome.innerText = vetor[i].nome;
         colunaValor.innerText = vetor[i].valor;
-        colunaSelecionar.innerHTML = "<button>Selecione</button>"
+        colunaSelecionar.innerHTML = `<button class="btn btn-success">Selecione</button>`;
     }
 }
