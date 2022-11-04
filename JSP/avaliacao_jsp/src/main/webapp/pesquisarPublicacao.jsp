@@ -91,7 +91,10 @@
 			while(rs.next()) { 
 				String codigo = rs.getString(1);
 				String titulo = rs.getString(2);
-				String conteudo = rs.getString(3).substring(0, 5);
+				String conteudo = rs.getString(3);
+				if (conteudo.length() > 5) {
+					conteudo = rs.getString(3).substring(0,10);
+				}
 		%>
 		<div class="row">
 			<div class="col-12 coluna">
