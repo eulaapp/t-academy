@@ -49,7 +49,6 @@
 	            Menu
 	          </a>
 	          <ul class="dropdown-menu">
-	          	
 	          	<% if( email != null) { %>
 	            <li><a class="dropdown-item" href="alterarDados.jsp">Alterar dados</a></li>
 	            <% if (isAdmin) { %>

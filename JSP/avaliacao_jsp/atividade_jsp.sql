@@ -30,6 +30,7 @@ CREATE TABLE usuario(
 
 INSERT INTO usuario(nome, sobrenome, email, senha, isActive, isAdmin) VALUE ('Eula', 'Pereira', 'eula@gmail.com', '123abc', true, true);
 
+
 INSERT INTO publicacao (titulo, conteudo) VALUES 
 ('Caipirinha', '1 limão grande<br>2 colheres de açúcar<br>gelo a gosto<br>cachaça'),
 ('Bolo de Maçã, Aveia e Canela', '3 maçãs<br>3 ovos<br>2 e meia xícaras (chá) de Aveia Flocos Orgânica NESTLÉ®<br>3 colheres (sopa) de óleo de coco<br>1 colher (sopa) de fermento em pó<br>1 pitada de canela em pó para polvilhar'),
