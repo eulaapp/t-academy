@@ -3,6 +3,7 @@ package br.com.atividade.atividade.controle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +26,11 @@ public class ArtistaControle {
     @GetMapping("")
     public Iterable<ArtistaModelo> selecionar() {
         return acao.findAll();
+    }
+
+    @PutMapping("")
+    public ArtistaModelo alterar(@RequestBody ArtistaModelo obj) {
+        return acao.save(obj);
     }
     
 }
