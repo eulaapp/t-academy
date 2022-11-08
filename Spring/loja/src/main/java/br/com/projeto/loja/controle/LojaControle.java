@@ -1,5 +1,7 @@
 package br.com.projeto.loja.controle;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +22,7 @@ public class LojaControle {
     }
 
     @PostMapping("")
-    public LojaModelo cadastrar(@RequestBody LojaModelo obj) {
+    public LojaModelo cadastrar(@Valid @RequestBody LojaModelo obj) {
         return acao.save(obj);
     }
 }
