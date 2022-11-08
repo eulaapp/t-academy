@@ -1,1 +1,1 @@
-CREATE DATABASE atividade;
+DROP DATABASE spring;
