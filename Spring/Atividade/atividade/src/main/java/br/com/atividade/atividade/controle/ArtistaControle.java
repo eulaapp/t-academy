@@ -1,7 +1,9 @@
 package br.com.atividade.atividade.controle;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,6 +33,11 @@ public class ArtistaControle {
     @PutMapping("")
     public ArtistaModelo alterar(@RequestBody ArtistaModelo obj) {
         return acao.save(obj);
+    }
+
+    @DeleteMapping("{codigo}")
+    public void remover(@PathVariable long codigo) {
+        acao.deleteById(codigo);
     }
     
 }
