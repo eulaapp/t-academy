@@ -21,7 +21,7 @@ public class PlaylistControle {
     @Autowired
     private PlaylistRepositorio acao;
 
-    @PostMapping("")
+    @PostMapping("/cadastrar")
     public PlaylistModelo cadastrar(@RequestBody PlaylistModelo obj) {
         return acao.save(obj);
     }
@@ -47,12 +47,12 @@ public class PlaylistControle {
         return acao.findByNomeContaining(nome);
     }
 
-    @PutMapping("/alterarNome/{codigo}")
-    public PlaylistModelo editarPlaylist(@PathVariable long codigo, @RequestBody PlaylistModelo obj) {
+    @PutMapping("/alterarNome")
+    public PlaylistModelo editarPlaylist(@RequestBody PlaylistModelo obj) {
         return acao.save(obj);
     }
 
-    @DeleteMapping("{codigo}")
+    @DeleteMapping("/remover/{codigo}")
     public void remover(@PathVariable long codigo) {
         acao.deleteById(codigo);
     }
