@@ -42,6 +42,24 @@ public class PlaylistControle {
         return pm;
     }
 
+    @PutMapping("/removerMusica/{codigo}")
+    public int removerMusicaPlaylist(@PathVariable long codigo, @RequestBody MusicaModelo obj) {
+        
+        PlaylistModelo pm = acao.findByCodigo(codigo);
+
+        int indice = -1;
+
+        for(int i=0; i<pm.getMusicas().size(); i++){
+            if(obj.getCodigo() == pm.getMusicas().get(i).getCodigo()){
+                pm.getMusicas().remove(i);
+            }
+        }
+
+       acao.save(pm);
+
+        return indice;
+    }
+
     @GetMapping("/pesquisa/{nome}")
     public Iterable<PlaylistModelo> pesquisar(@PathVariable String nome) {
         return acao.findByNomeContaining(nome);
