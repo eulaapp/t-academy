@@ -29,10 +29,6 @@ public class PlaylistModelo {
     )
     private List<MusicaModelo> musicas = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "playlists")
-    private List<UsuarioModelo> usuarios = new ArrayList<>();
-
-
     public long getCodigo() {
         return this.codigo;
     }
