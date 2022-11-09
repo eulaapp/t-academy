@@ -30,7 +30,7 @@ public class PlaylistControle {
         return acao.findAll();
     }
 
-    @PutMapping("/{codigo}")
+    @PutMapping("/adicionarMusica/{codigo}")
     public PlaylistModelo adicionarMusicaPlaylist(@PathVariable long codigo, @RequestBody MusicaModelo obj) {
         PlaylistModelo pm = acao.findByCodigo(codigo);
 
@@ -44,5 +44,10 @@ public class PlaylistControle {
     @GetMapping("/pesquisa/{nome}")
     public Iterable<PlaylistModelo> pesquisar(@PathVariable String nome) {
         return acao.findByNomeContaining(nome);
+    }
+
+    @PutMapping("/alterarNome/{codigo}")
+    public PlaylistModelo editarPlaylist(@PathVariable long codigo, @RequestBody PlaylistModelo obj) {
+        return acao.save(obj);
     }
 }
