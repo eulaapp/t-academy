@@ -39,5 +39,10 @@ public class ArtistaControle {
     public void remover(@PathVariable long codigo) {
         acao.deleteById(codigo);
     }
+
+    @GetMapping("/pesquisa/{nome}")
+    public Iterable<ArtistaModelo> pesquisar(@PathVariable String nome) {
+        return acao.findByNomeContaining(nome);
+    }
     
 }
