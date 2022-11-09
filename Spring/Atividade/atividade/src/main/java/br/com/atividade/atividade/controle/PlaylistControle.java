@@ -40,4 +40,9 @@ public class PlaylistControle {
 
         return pm;
     }
+
+    @GetMapping("/pesquisa/{nome}")
+    public Iterable<PlaylistModelo> pesquisar(@PathVariable String nome) {
+        return acao.findByNomeContaining(nome);
+    }
 }
