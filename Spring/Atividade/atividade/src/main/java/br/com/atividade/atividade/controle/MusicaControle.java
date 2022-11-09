@@ -30,7 +30,7 @@ public class MusicaControle {
         return acao.findAll();
     }
 
-    @PutMapping("")
+    @PutMapping("/alterarNome")
     public MusicaModelo alterar(@RequestBody MusicaModelo obj) {
         return acao.save(obj);
     }
