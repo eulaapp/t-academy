@@ -52,5 +52,10 @@ public class ArtistaControle {
     public Iterable<ArtistaModelo> pesquisar(@PathVariable String nome) {
         return acao.findByNomeContaining(nome);
     }
+
+    @PutMapping("/alterarNome")
+    public ArtistaModelo editarPlaylist(@RequestBody ArtistaModelo obj) {
+        return acao.save(obj);
+    }
     
 }
