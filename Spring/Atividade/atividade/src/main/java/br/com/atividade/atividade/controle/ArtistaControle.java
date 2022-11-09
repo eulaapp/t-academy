@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.atividade.atividade.modelo.ArtistaModelo;
+import br.com.atividade.atividade.modelo.MusicaModelo;
 import br.com.atividade.atividade.repositorio.ArtistaRepositorio;
 
 @RestController
@@ -30,9 +31,16 @@ public class ArtistaControle {
         return acao.findAll();
     }
 
-    @PutMapping("")
-    public ArtistaModelo alterar(@RequestBody ArtistaModelo obj) {
-        return acao.save(obj);
+    @PutMapping("/{codigo}")
+    public ArtistaModelo alterar(@PathVariable long codigo, @RequestBody MusicaModelo obj) {
+
+        ArtistaModelo am = acao.findByCodigo(codigo);
+
+        am.getMusicas().add(obj);
+
+        acao.save(am);
+
+        return am;
     }
 
     @DeleteMapping("{codigo}")
