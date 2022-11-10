@@ -19,11 +19,9 @@ function exibirArtistas() {
     for(let i = 0; i < artistas.length; i++) {
         let linha = tabela.insertRow(-1);
 
-        let colunaCodigo = linha.insertCell(0);
-        let colunaNome = linha.insertCell(1);
-        let colunaSelecionar = linha.insertCell(2);
+        let colunaNome = linha.insertCell(0);
+        let colunaSelecionar = linha.insertCell(1);
 
-        colunaCodigo.innerText = artistas[i].codigo;
         colunaNome.innerText = artistas[i].nome;
         colunaSelecionar.innerHTML = `<button onclick="selecionarArtista(${artistas[i].codigo})" class="btn btn-success">Selecionar</button>`;
 
