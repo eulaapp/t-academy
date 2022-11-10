@@ -23,7 +23,7 @@ public class ArtistaControle {
     @Autowired
     private ArtistaRepositorio acao;
 
-    @PostMapping("")
+    @PostMapping("/cadastrar")
     public ArtistaModelo cadastrar(@RequestBody ArtistaModelo obj) {
         return acao.save(obj);
     }
@@ -33,7 +33,7 @@ public class ArtistaControle {
         return acao.findAll();
     }
 
-    @PutMapping("/{codigo}")
+    @PutMapping("/alterar/{codigo}")
     public ArtistaModelo alterar(@PathVariable long codigo, @RequestBody MusicaModelo obj) {
 
         ArtistaModelo am = acao.findByCodigo(codigo);
@@ -45,7 +45,7 @@ public class ArtistaControle {
         return am;
     }
 
-    @DeleteMapping("{codigo}")
+    @DeleteMapping("/remover/{codigo}")
     public void remover(@PathVariable long codigo) {
         acao.deleteById(codigo);
     }
@@ -58,6 +58,11 @@ public class ArtistaControle {
     @PutMapping("/alterarNome")
     public ArtistaModelo editarPlaylist(@RequestBody ArtistaModelo obj) {
         return acao.save(obj);
+    }
+
+    @GetMapping("/filtrar/{codigo}")
+    public ArtistaModelo filtrar(@PathVariable long codigo) {
+        return acao.findByCodigo(codigo);
     }
     
 }
