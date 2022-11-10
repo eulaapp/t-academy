@@ -1,0 +1,27 @@
+
+form {
+    margin: 30px auto;
+    width: 500px;
+    text-align: center;
+}
+
+form input {
+    margin-top: 15px;
+}
+
+#btnAlterar, #btnRemover {
+    display: none;
+}
+
+nav {
+    background-color: #EDC1D0;
+}
+
+.tabela-artistas {
+    margin: 30px auto;
+}
+
+table {
+    padding-left: 20px;
+    border-radius: 5px;
+}

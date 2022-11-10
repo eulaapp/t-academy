@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+     <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <script src="sript.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Músicas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Playlist</a>
+              </li>
+            </ul>
+            <!-- <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
+          </div>
+        </div>
+      </nav>
+    <div>
+        <form action="">
+            <input type="hidden" id="codigoArtista">
+            <input type="text" placeholder="Artista" id="artista" class="form-control">
+    
+            <input type="button" value="Cadastrar" onclick="cadastrarArtista()" id="btnCadastrar" class="btn btn-primary">
+            <input type="button" value="Alterar"   onclick="alterar()" id="btnAlterar" class="btn btn-warning">
+            <input type="button" value="Remover"   onclick="removerArtista()"   id="btnRemover" class="btn btn-danger">
+            <!-- <input type="hidden" id="codigoMusica">
+            <input type="text" placeholder="Música" id="musica" class="form-control">
+            <input type="text" placeholder="Link" id="link" class="form-control"> -->
+        </form>
+    
+        <div class="tabela-artistas">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>Selecionar</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela"></tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
