@@ -1,0 +1,15 @@
+Executar projeto angular: 
+- ng serve
+- ng s
+- ng serve --open
+- ng s --o
+
+- *ngFor
+
+- ctrl + c = finalizar app
+
+Criar componente:
+- ng g c 
+
+Criar API falsa:
+npm i json-server
